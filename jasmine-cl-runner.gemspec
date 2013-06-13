@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'jasmine/cl/runner/version'
+require 'jasmine_cl_runner/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "jasmine-cl-runner"
-  spec.version       = Jasmine::Cl::Runner::VERSION
+  spec.version       = JasmineClRunner::VERSION
   spec.authors       = ["Andrew De Ponte"]
   spec.email         = ["cyphactor@gmail.com"]
   spec.description   = %q{A Jasmine JavaScript test running that lets you run tests on the command-line similar to RSpec.}
@@ -19,6 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "capybara", "~> 2.1.0"
+  spec.add_dependency "poltergeist", "~> 1.3.0"
+  spec.add_dependency "sinatra", "~> 1.4.3"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec", "~> 2.13.0"
 end

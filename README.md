@@ -1,4 +1,4 @@
-# Jasmine::Cl::Runner
+# JasmineClRunner
 
 TODO: Write a gem description
 
