@@ -25,10 +25,6 @@ module JasmineClRunner
       send_file File.expand_path(File.join('../jasmine/lib/jasmine-core', path), File.dirname(__FILE__))
     end
 
-    get "/jasmine/*" do |path|
-      send_file File.expand_path(File.join('../jasmine/src', path), File.dirname(__FILE__))
-    end
-
     get "/resources/*" do |path|
       send_file File.expand_path(File.join('resources', path), File.dirname(__FILE__))
     end

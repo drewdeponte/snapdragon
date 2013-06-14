@@ -19,9 +19,7 @@
 </script>
 
 <script type="text/javascript">
-  // The javascript for the implementation code
-
-  // The javascript for the jasmine specs
+  // The implementation code the spec files being tested need
 
   // <![CDATA[
       <% if @spec_path %>
@@ -30,29 +28,39 @@
   // File.read of the spec file
 
 
-// The implementation file contents
-var Hoopty = function() {
-  this.hello = function() {
-    return "Hello There aueaeo";
-  }
-};
+  // This is just some test implementation code to test that everything would
+  // work assuming that I can find a way to get the implementation code
+  // loaded in here like this.
+  var Hoopty = function() {
+    this.hello = function() {
+      return "Hello There";
+    }
+  };
 
+  // ]]>
+</script>
 
-// The spec file contents
-describe("Hoopty", function() {
-  it("exists", function() {
-    var f = new Hoopty();
-    /* expect(f).not.toBe(undefined); */
-  });
+<script type="text/javascript">
+  // The spec file contents
 
-  describe(".hello", function() {
-    it("says hello there", function() {
+  // <![CDATA[
+
+  // This is just some example Jasmine spec code to test that everything would
+  // work assuming that I can find a way to get the spec code loaded in here
+  // like this.
+  describe("Hoopty", function() {
+    it("exists", function() {
       var f = new Hoopty();
-      expect(f.hello()).toBe("Hello There");
+      expect(f).not.toBe(undefined);
+    });
+
+    describe(".hello", function() {
+      it("says hello there", function() {
+        var f = new Hoopty();
+        expect(f.hello()).toBe("Hello There");
+      });
     });
   });
-});
-
 
   // ]]>
 </script>
