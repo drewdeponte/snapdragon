@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="/jasmine-core/jasmine.css">
+<script type="text/javascript" src="/jasmine-core/jasmine.js"></script>
+<script type="text/javascript" src="/jasmine-core/jasmine-html.js"></script>
+
+<script type="text/javascript" src="/resources/ConsoleReporter.js"></script>
+
+<script type="text/javascript" src="/jasmine-core/boot.js"></script>
+
+<script type="text/javascript">
+  // <![CDATA[
+
+  // standard jasmine code to add console reporter in runner code goes here
+  var env = jasmine.getEnv();
+  var consoleReporterFunc = getJasmineRequireObj().ConsoleReporter();
+  var consoleReporter = new consoleReporterFunc({});
+  env.addReporter(consoleReporter);
+
+  // ]]>
+</script>
+
+<script type="text/javascript">
+  // The javascript for the implementation code
+
+  // The javascript for the jasmine specs
+
+  // <![CDATA[
+      <% if @spec_path %>
+        <%# <%= render_spec(@spec_path) %>
+      <% end %>
+  // File.read of the spec file
+
+
+// The implementation file contents
+var Hoopty = function() {
+  this.hello = function() {
+    return "Hello There aueaeo";
+  }
+};
+
+
+// The spec file contents
+describe("Hoopty", function() {
+  it("exists", function() {
+    var f = new Hoopty();
+    /* expect(f).not.toBe(undefined); */
+  });
+
+  describe(".hello", function() {
+    it("says hello there", function() {
+      var f = new Hoopty();
+      expect(f.hello()).toBe("Hello There");
+    });
+  });
+});
+
+
+  // ]]>
+</script>
+
