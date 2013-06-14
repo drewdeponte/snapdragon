@@ -37,6 +37,27 @@
     }
   };
 
+  // Thoughts on loading the implementation file content for the paired spec content below
+  // 
+  // Scenario #1: User runs comand with specific relative_spec_path:line_number
+  //   - parse the spec file for // require('relative_path_to_implementation_file') calls
+  //   - collect all of the require calls and unique them
+  //   - expand the path for each of the require calls using a configurable base path or the project root path
+  //   - iterate through each of the implementation files and read their content into the script tag here
+  //
+  // Scenario #2: User runs comand with specific relative_spec_path
+  //   - parse the spec file for // require('relative_path_to_implementation_file') calls
+  //   - collect all of the require calls and unique them
+  //   - expand the path for each of the require calls using a configurable base path or the project root path
+  //   - iterate through each of the implementation files and read their content into the script tag here
+  //
+  // Scenario #3: User runs comand with specific relative path to a directory
+  //   - recursively iterate through the directory finding spec files, for each spec file we do the following
+  //     - parse the spec file for // require('relative_path_to_implementation_file') calls
+  //   - collect all of the require calls and unique them
+  //   - expand the path for each of the require calls using a configurable base path or the project root path
+  //   - iterate through each of the implementation files and read their content into the script tag here
+
   // ]]>
 </script>
 
@@ -61,6 +82,17 @@
       });
     });
   });
+
+  // Thoughts on loading spec file contents like the above.
+  //
+  // Scenario #1: User runs command with specific relative_spec_path:line_number
+  //   - identify the cwd and expand the relative_spec_path, read the contents of the file into the script tag here
+  //
+  // Scenario #2: User runs command with specific relative_spec_path
+  //   - identify the cwd and expand the relative_spec_path, read the contents of the file into the script tag here 
+  //
+  // Scenario #3: User runs command with specific relative path to directory
+  //   - recursively iterate through the specified directory and read the contents of each identified spec file into the script tag
 
   // ]]>
 </script>
