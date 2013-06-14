@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'erb'
 
-module JasmineClRunner
+module Snapdragon
   class WebApplication < Sinatra::Base
     set :static, false
     set :root, File.expand_path('.', File.dirname(__FILE__))

@@ -5,7 +5,7 @@ $LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
 require 'rubygems'
 require 'capybara'
 require 'capybara/poltergeist'
-require 'jasmine_cl_runner/web_application'
+require 'snapdragon/web_application'
 
 session = Capybara::Session.new(:poltergeist, JasmineClRunner::WebApplication)
 session.visit('/run/foo/bar/tit_spec.js')

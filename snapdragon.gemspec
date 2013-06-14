@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'jasmine_cl_runner/version'
+require 'snapdragon/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "jasmine-cl-runner"
-  spec.version       = JasmineClRunner::VERSION
+  spec.name          = "snapdragon"
+  spec.version       = Snapdragon::VERSION
   spec.authors       = ["Andrew De Ponte"]
   spec.email         = ["cyphactor@gmail.com"]
   spec.description   = %q{A Jasmine JavaScript test running that lets you run tests on the command-line similar to RSpec.}
