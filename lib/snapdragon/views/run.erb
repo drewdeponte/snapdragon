@@ -57,6 +57,13 @@
   //   - collect all of the require calls and unique them
   //   - expand the path for each of the require calls using a configurable base path or the project root path
   //   - iterate through each of the implementation files and read their content into the script tag here
+  //
+  // Note: After sleeping on the above I think the // require() should really
+  // be // require_relative() and that it should require files relative to the file
+  // which the // require_relative() call is found in. The value of this is that all that should be needed is
+  // the CWD of the command when run and the paths of the spec files to be able to determine the paths of the
+  // the implementation files assuming require_relative(). If we simply had require() then we would have to
+  // have the user configure some base directory or base direcotries to search in for the files being required.
 
   // ]]>
 </script>
