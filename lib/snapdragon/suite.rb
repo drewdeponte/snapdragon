@@ -11,5 +11,9 @@ module Snapdragon
     def add_spec_files(spec_files)
       @specs.concat(spec_files)
     end
+
+    def spec_files
+      @specs
+    end
   end
 end

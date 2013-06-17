@@ -15,14 +15,12 @@ module Snapdragon
 
     def run
       parse_arguements(@args)
-      # session = Capybara::Session.new(:poltergeist, Snapdragon::WebApplication.new(nil, @suite))
-      # session.visit('/run')
+      run_suite
     end
 
     private
 
     def parse_arguements(arguements)
-      puts arguements.inspect
       arguements.each do |arguement|
         parse_arguement(arguement)
       end
@@ -50,6 +48,11 @@ module Snapdragon
 
     def is_a_directory?(arguement)
       arguement =~ /^[\w\/\-\d]+$/
+    end
+
+    def run_suite
+      session = Capybara::Session.new(:poltergeist, Snapdragon::WebApplication.new(nil, @suite))
+      session.visit('/run')
     end
   end
 end

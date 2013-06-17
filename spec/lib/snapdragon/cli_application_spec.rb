@@ -22,12 +22,18 @@ describe Snapdragon::CliApplication do
   end
 
   describe "#run" do
-    let(:arguements) { stub('arguments') }
-    subject { Snapdragon::CliApplication.new(arguements) }
-
     it "parses the given command line arguements" do
-      subject.should_receive(:parse_arguements).with(arguements)
-      subject.run
+      arguements = stub
+      app = Snapdragon::CliApplication.new(arguements)
+      app.should_receive(:parse_arguements).with(arguements)
+      app.stub(:run_suite)
+      app.run
+    end
+
+    it "runs the Jasmine suite" do
+      app = Snapdragon::CliApplication.new(['/some/path/to_some_spec.js'])
+      app.should_receive(:run_suite)
+      app.run
     end
   end
 
@@ -166,6 +172,23 @@ describe Snapdragon::CliApplication do
       it "returns false" do
         subject.send(:is_a_directory?, 'some/path/to/some_spec.js').should be_false
       end
+    end
+  end
+
+  describe "#run_suite" do
+    let(:arguements) { stub('arguments') }
+    subject { Snapdragon::CliApplication.new(arguements) }
+
+    it "creates a capybara session" do
+      Capybara::Session.should_receive(:new).and_return(stub.as_null_object)
+      subject.send(:run_suite)
+    end
+
+    it "visits /run in that capybara session" do
+      session = mock
+      Capybara::Session.stub(:new).and_return(session)
+      session.should_receive(:visit).with('/run')
+      subject.send(:run_suite)
     end
   end
 end

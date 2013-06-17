@@ -3,8 +3,10 @@ describe "snapdragon cli" do
   end
 
   context "when user runs command with specific relative_spec_path" do
-    output = IO.popen(File.expand_path('../../../bin/snapdragon', __FILE__) + " aoeuaeoauaoeuaoe")
-    puts output.readlines
+    it "runs the spec file" do
+      output = IO.popen(File.expand_path('../../../bin/snapdragon', __FILE__) + " example/spec/PlayerSpec.js")
+      # puts output.readlines
+    end
   end
 
   context "when user runs command with specific relative_path_to_directory" do

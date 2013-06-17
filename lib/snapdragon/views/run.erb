@@ -23,17 +23,14 @@
 
   // <![CDATA[
 
+  <% @suite.spec_files.each do |spec| %>
+    <%= spec.requires %>
+  <% end %>
+
+
   // File.read of the spec file
 
 
-  // This is just some test implementation code to test that everything would
-  // work assuming that I can find a way to get the implementation code
-  // loaded in here like this.
-  var Hoopty = function() {
-    this.hello = function() {
-      return "Hello There";
-    }
-  };
 
   // Thoughts on loading the implementation file content for the paired spec content below
   // 
@@ -71,28 +68,10 @@
 
   // <![CDATA[
 
-  // This is just some example Jasmine spec code to test that everything would
-  // work assuming that I can find a way to get the spec code loaded in here
-  // like this.
-  describe("Hoopty", function() {
-    it("exists", function() {
-      var f = new Hoopty();
-      expect(f).not.toBe(undefined);
-    });
+  <% @suite.spec_files.each do |spec| %>
+    <%= spec.read %>
+  <% end %>
 
-    // it("handles pending", function() {
-    // });
-
-    // it("handles another pending", function() {
-    // });
-
-    describe(".hello", function() {
-      it("says hello there", function() {
-        var f = new Hoopty();
-        expect(f.hello()).toBe("Hello There");
-      });
-    });
-  });
 
   // Thoughts on loading spec file contents like the above.
   //

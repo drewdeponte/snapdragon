@@ -8,6 +8,14 @@ describe Snapdragon::Suite do
     end
   end
 
+  describe "#specs" do
+    it "returns the array of specs which the suite contains" do
+      spec_file = stub
+      subject.add_spec_file(spec_file)
+      subject.spec_files.should eq([spec_file])
+    end
+  end
+
   describe "#add_spec_file" do
     it "appends the given SpecFile to the suite of specs" do
       spec_file = stub
