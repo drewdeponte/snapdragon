@@ -1,7 +1,4 @@
 require_relative '../../../lib/snapdragon/cli_application'
-require_relative '../../../lib/snapdragon/spec_file'
-require_relative '../../../lib/snapdragon/suite'
-require_relative '../../../lib/snapdragon/spec_directory'
 
 describe Snapdragon::CliApplication do
   describe "#initialize" do
@@ -117,6 +114,57 @@ describe Snapdragon::CliApplication do
         spec_dir.stub(:spec_files).and_return(spec_files)
         suite.should_receive(:add_spec_files).with(spec_files)
         subject.send(:parse_arguement, 'some/path/to/some_directory')
+      end
+    end
+  end
+
+  describe "#is_a_file_path_and_line_number?" do
+    let(:arguements) { stub('arguments') }
+    subject { Snapdragon::CliApplication.new(arguements) }
+
+    context "when it matches the pattern of a file path and line number" do
+      it "returns true" do
+        subject.send(:is_a_file_path_and_line_number?, 'some/path/to/some_spec.js:534').should be_true
+      end
+    end
+    
+    context "when it does NOT match the pattern of a file path and line number" do
+      it "returns false" do
+        subject.send(:is_a_file_path_and_line_number?, 'some/path/to/some_spec.js').should be_false
+      end
+    end
+  end
+
+  describe "#is_a_file_path?" do
+    let(:arguements) { stub('arguments') }
+    subject { Snapdragon::CliApplication.new(arguements) }
+
+    context "when it matches the pattern of a file path" do
+      it "returns true" do
+        subject.send(:is_a_file_path?, 'some/path/to/some_spec.js').should be_true
+      end
+    end
+
+    context "when it does NOT match the pattern of a file path" do
+      it "returns false" do
+        subject.send(:is_a_file_path?, 'some/path/to/some.js').should be_false
+      end
+    end
+  end
+
+  describe "#is_a_directory?" do
+    let(:arguements) { stub('arguments') }
+    subject { Snapdragon::CliApplication.new(arguements) }
+
+    context "when it matches the pattern of a directory path" do
+      it "returns true" do
+        subject.send(:is_a_directory?, 'some/path/to/some_directory').should be_true
+      end
+    end
+
+    context "when it does NOT match the pattern of a directory path" do
+      it "returns false" do
+        subject.send(:is_a_directory?, 'some/path/to/some_spec.js').should be_false
       end
     end
   end

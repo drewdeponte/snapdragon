@@ -1,3 +1,11 @@
+require 'capybara'
+require 'capybara/poltergeist'
+
+require_relative './web_application'
+require_relative './suite'
+require_relative './spec_file'
+require_relative './spec_directory'
+
 module Snapdragon
   class CliApplication
     def initialize(arguements)
@@ -7,11 +15,14 @@ module Snapdragon
 
     def run
       parse_arguements(@args)
+      # session = Capybara::Session.new(:poltergeist, Snapdragon::WebApplication.new(nil, @suite))
+      # session.visit('/run')
     end
 
     private
 
     def parse_arguements(arguements)
+      puts arguements.inspect
       arguements.each do |arguement|
         parse_arguement(arguement)
       end
@@ -27,6 +38,18 @@ module Snapdragon
         spec_dir = Snapdragon::SpecDirectory.new(arguement)
         @suite.add_spec_files(spec_dir.spec_files)
       end
+    end
+
+    def is_a_file_path_and_line_number?(arguement)
+      arguement =~ /^[\w\/\-\d]+[s|S]pec\.js:\d+$/
+    end
+
+    def is_a_file_path?(arguement)
+      arguement =~ /^[\w\/\-\d]+[s|S]pec\.js$/
+    end
+
+    def is_a_directory?(arguement)
+      arguement =~ /^[\w\/\-\d]+$/
     end
   end
 end

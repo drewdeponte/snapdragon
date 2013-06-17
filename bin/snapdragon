@@ -3,12 +3,17 @@
 $LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
 
 require 'rubygems'
-require 'capybara'
-require 'capybara/poltergeist'
-require 'snapdragon/web_application'
+require 'snapdragon/cli_application'
 
-session = Capybara::Session.new(:poltergeist, Snapdragon::WebApplication)
-session.visit('/run/foo/bar/tit_spec.js')
+app = Snapdragon::CliApplication.new(ARGV)
+app.run
+
+# require 'capybara'
+# require 'capybara/poltergeist'
+# require 'snapdragon/web_application'
+# 
+# session = Capybara::Session.new(:poltergeist, Snapdragon::WebApplication.new(nil, 53324))
+# session.visit('/run')
 
 # TODO: need to figure out how to console.log() without it automatically
 # throwing a newline on the end. If I can't figure out a good way to do with

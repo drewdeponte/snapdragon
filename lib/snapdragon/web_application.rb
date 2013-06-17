@@ -6,18 +6,18 @@ module Snapdragon
     set :static, false
     set :root, File.expand_path('.', File.dirname(__FILE__))
 
+    def initialize(app = nil, suite)
+      super()
+      @suite = suite
+    end
+
     helpers do
       def render_spec(spec_path)
         File.read(spec_path)
       end
     end
 
-    get "/hello" do
-      "Hello World!"
-    end
-
-    get "/run/*" do |path|
-      @spec_path = path
+    get "/run" do
       erb :run
     end
 
