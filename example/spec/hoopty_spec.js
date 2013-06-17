@@ -9,11 +9,11 @@ describe("Hoopty", function() {
     expect(f).not.toBe(undefined);
   });
 
-  // it("handles pending", function() {
-  // });
+  it("handles pending", function() {
+  });
 
-  // it("handles another pending", function() {
-  // });
+  it("handles another pending", function() {
+  });
 
   describe(".hello", function() {
     it("says hello there", function() {

@@ -7,40 +7,20 @@
 <script type="text/javascript" src="/jasmine-core/boot.js"></script>
 
 <script type="text/javascript">
-  // <![CDATA[
-
   // standard jasmine code to add console reporter in runner code goes here
   var env = jasmine.getEnv();
   var consoleReporterFunc = getJasmineRequireObj().ConsoleReporter();
   var consoleReporter = new consoleReporterFunc({});
   env.addReporter(consoleReporter);
-
-  // ]]>
 </script>
 
 <script type="text/javascript">
   // The implementation code the spec files being tested need
-
-  // <![CDATA[
-
-  <% @suite.spec_files.each do |spec| %>
-    <%= spec.requires %>
-  <% end %>
-
-
-  // File.read of the spec file
-
-
+  <%= @suite.output_spec_dependencies %>
 
   // Thoughts on loading the implementation file content for the paired spec content below
   // 
   // Scenario #1: User runs comand with specific relative_spec_path:line_number
-  //   - parse the spec file for // require('relative_path_to_implementation_file') calls
-  //   - collect all of the require calls and unique them
-  //   - expand the path for each of the require calls using a configurable base path or the project root path
-  //   - iterate through each of the implementation files and read their content into the script tag here
-  //
-  // Scenario #2: User runs comand with specific relative_spec_path
   //   - parse the spec file for // require('relative_path_to_implementation_file') calls
   //   - collect all of the require calls and unique them
   //   - expand the path for each of the require calls using a configurable base path or the project root path
@@ -52,38 +32,11 @@
   //   - collect all of the require calls and unique them
   //   - expand the path for each of the require calls using a configurable base path or the project root path
   //   - iterate through each of the implementation files and read their content into the script tag here
-  //
-  // Note: After sleeping on the above I think the // require() should really
-  // be // require_relative() and that it should require files relative to the file
-  // which the // require_relative() call is found in. The value of this is that all that should be needed is
-  // the CWD of the command when run and the paths of the spec files to be able to determine the paths of the
-  // the implementation files assuming require_relative(). If we simply had require() then we would have to
-  // have the user configure some base directory or base direcotries to search in for the files being required.
-
-  // ]]>
 </script>
 
 <script type="text/javascript">
   // The spec file contents
-
-  // <![CDATA[
-
   <% @suite.spec_files.each do |spec| %>
     <%= spec.read %>
   <% end %>
-
-
-  // Thoughts on loading spec file contents like the above.
-  //
-  // Scenario #1: User runs command with specific relative_spec_path:line_number
-  //   - identify the cwd and expand the relative_spec_path, read the contents of the file into the script tag here
-  //
-  // Scenario #2: User runs command with specific relative_spec_path
-  //   - identify the cwd and expand the relative_spec_path, read the contents of the file into the script tag here 
-  //
-  // Scenario #3: User runs command with specific relative path to directory
-  //   - recursively iterate through the specified directory and read the contents of each identified spec file into the script tag
-
-  // ]]>
 </script>
-

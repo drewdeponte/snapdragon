@@ -11,6 +11,22 @@ module Snapdragon
       return content
     end
 
+    def require_paths
+      f = File.open(@path, 'r')
+      lines = f.readlines
+      f.close
+
+      require_paths = []
+
+      lines.each do |line|
+        if line =~ /\/\/+\s+require_relative\(['"](.+)['"]\)\s+$/
+          require_paths << File.expand_path(File.join(File.dirname(@path), $1))
+        end
+      end
+
+      return require_paths
+    end
+
     def requires
       f = File.open(@path, 'r')
       lines = f.readlines

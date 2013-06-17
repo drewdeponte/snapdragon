@@ -7,4 +7,5 @@ describe Snapdragon::SpecFile do
       spec_file.instance_variable_get(:@path).should eq('some/path/to_some_spec.js')
     end
   end
+
 end
