@@ -1,4 +1,4 @@
-Copyright (c) 2013 Andrew De Ponte
+Copyright (c) 2013 Andrew De Ponte, ReachLocal, Inc.
 
 MIT License
 
