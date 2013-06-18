@@ -32,6 +32,7 @@ describe Snapdragon::CliApplication do
 
     it "runs the Jasmine suite" do
       app = Snapdragon::CliApplication.new(['/some/path/to_some_spec.js'])
+      app.stub(:parse_arguements)
       app.should_receive(:run_suite)
       app.run
     end
@@ -57,7 +58,7 @@ describe Snapdragon::CliApplication do
       end
 
       it "creates a SpecFile with the specified path and line number" do
-        Snapdragon::SpecFile.should_receive(:new).with('some/path/to/some_spec.js', 45)
+        Snapdragon::SpecFile.should_receive(:new).with('some/path/to/some_spec.js', 45).and_return(stub.as_null_object)
         subject.send(:parse_arguement, 'some/path/to/some_spec.js:45')
       end
 
@@ -78,7 +79,7 @@ describe Snapdragon::CliApplication do
       end
 
       it "creates a SpecFile object with the specified path" do
-        Snapdragon::SpecFile.should_receive(:new).with('some/path/to/some_spec.js')
+        Snapdragon::SpecFile.should_receive(:new).with('some/path/to/some_spec.js').and_return(stub.as_null_object)
         subject.send(:parse_arguement, 'some/path/to/some_spec.js')
       end
 
@@ -184,11 +185,30 @@ describe Snapdragon::CliApplication do
       subject.send(:run_suite)
     end
 
-    it "visits /run in that capybara session" do
-      session = mock
-      Capybara::Session.stub(:new).and_return(session)
-      session.should_receive(:visit).with('/run')
-      subject.send(:run_suite)
+    context "when suite is filtered" do
+      before do
+        subject.instance_variable_set(:@suite, stub(:filtered? => true, :spec_query_param => 'some_query_param_spec_filter'))
+      end
+
+      it "visits /run with the spec query param in the capybara session" do
+        session = mock
+        Capybara::Session.stub(:new).and_return(session)
+        session.should_receive(:visit).with("/run?spec=some_query_param_spec_filter")
+        subject.send(:run_suite)
+      end
+    end
+
+    context "when suite is NOT filtered" do
+      before do
+        subject.instance_variable_set(:@suite, stub(:filtered? => false))
+      end
+
+      it "visits /run in that capybara session" do
+        session = mock
+        Capybara::Session.stub(:new).and_return(session)
+        session.should_receive(:visit).with('/run')
+        subject.send(:run_suite)
+      end
     end
   end
 end

@@ -1,5 +1,6 @@
 require 'capybara'
 require 'capybara/poltergeist'
+require 'launchy'
 
 require_relative './web_application'
 require_relative './suite'
@@ -22,7 +23,7 @@ module Snapdragon
       parse_arguements(@args)
       server = Capybara::Server.new(Snapdragon::WebApplication.new(nil, @suite), 9292)
       server.boot
-      puts "open http://localhost:9292/run to run your test suite"
+      Launchy.open('http://localhost:9292/run')
       trap('SIGINT') { puts "Shutting down..."; exit 0 }
       sleep
     end
