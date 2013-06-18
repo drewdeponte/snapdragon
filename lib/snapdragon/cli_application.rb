@@ -7,6 +7,12 @@ require_relative './suite'
 require_relative './spec_file'
 require_relative './spec_directory'
 
+# Set the default_wait_time to something reasonable for the entire length of
+# the test suite to run. This should probably eventually be something
+# configurable because these could break for people with long running test
+# suites.
+Capybara.default_wait_time = 120 # 2 mins
+
 module Snapdragon
   class CliApplication
     def initialize(arguements)
@@ -65,8 +71,10 @@ module Snapdragon
       session = Capybara::Session.new(:poltergeist, Snapdragon::WebApplication.new(nil, @suite))
       if @suite.filtered?
         session.visit("/run?spec=#{@suite.spec_query_param}")
+        session.find("#testscomplete")
       else
         session.visit("/run")
+        session.find("#testscomplete")
       end
     end
   end
