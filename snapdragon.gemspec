@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Snapdragon::VERSION
   spec.authors       = ["Andrew De Ponte"]
   spec.email         = ["cyphactor@gmail.com"]
-  spec.description   = %q{A Jasmine JavaScript test running that lets you run tests on the command-line similar to RSpec.}
+  spec.description   = %q{A Jasmine JavaScript test runner that lets you run tests on the command-line similar to RSpec.}
   spec.summary       = %q{A command-line Jasmine JavaScript test runner.}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/reachlocal/snapdragon"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
