@@ -9,6 +9,6 @@ describe Snapdragon::SpecDirectory do
   end
 
   describe "#spec_files" do
-    it "recursively explores the directory and its subdirectories building an array of spec files"
+    it "needs to be tested"
   end
 end

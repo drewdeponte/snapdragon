@@ -17,4 +17,20 @@ describe Snapdragon::SpecFile do
       spec_file.instance_variable_get(:@line_number).should eq(nil)
     end
   end
+
+  describe "#read" do
+    it "needs to be tested"
+  end
+
+  describe "#require_paths" do
+    it "needs to be tested"
+  end
+
+  describe "#filtered?" do
+    it "needs to be tested"
+  end
+
+  describe "#spec_query_param" do
+    it "needs to be tested"
+  end
 end

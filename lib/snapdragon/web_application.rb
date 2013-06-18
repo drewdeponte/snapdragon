@@ -11,12 +11,6 @@ module Snapdragon
       @suite = suite
     end
 
-    helpers do
-      def render_spec(spec_path)
-        File.read(spec_path)
-      end
-    end
-
     get "/run" do
       erb :run
     end
