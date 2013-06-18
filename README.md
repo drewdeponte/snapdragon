@@ -42,51 +42,6 @@ follow the steps below to get started.
    `example/spec/hoopty_spec.js` with the following content.
 
     ```javascript
-    describe("Hoopty", function() {
-      describe(".hello", function() {
-        it("says hello there", function() {
-          var f = new Hoopty();
-          expect(f.hello()).toBe("Hello There");
-        });
-      });
-    });
-    ```
-
-3. Run your spec file with the following command:
-
-    ```text
-    $ snapdragon example/spec/hoopty_spec.js
-    ```
-
-    You should see output looking similar to the following.
-
-    ```text
-    Running examples...
-
-    Failures:
-
-      1) Hoopty .hello says hello there.
-          ReferenceError: Can't find variable: Hoopty in http://127.0.0.1:51202/run (line 35)
-
-    Finished in 0.002 seconds
-    1 example, 1 failure
-    ```
-
-4. Create the implementation file for the spec file `example/src/hoopty.js`
-   with the following content.
-
-    ```javascript
-    var Hoopty = function() {
-      this.hello = function() {
-        return "Hello There";
-      }
-    };
-    ```
-
-5. Prepend a `// require_relative()` directive to the spec file telling it
-   about the implementation file. This should look as follows once complete.
-
-    ```javascript
     // require_relative('../src/hoopty.js')
 
     describe("Hoopty", function() {
@@ -99,13 +54,24 @@ follow the steps below to get started.
     });
     ```
 
-6. Run your spec file with the following command:
+3. Create the implementation file for the spec file `example/src/hoopty.js`
+   with the following content.
+
+    ```javascript
+    var Hoopty = function() {
+      this.hello = function() {
+        return "Hello There";
+      }
+    };
+    ```
+
+4. Run your spec file with the following command:
 
     ```text
     $ snapdragon example/spec/hoopty_spec.js
     ```
 
-    You should see output should now look similar to the following.
+    You should see output that looks similar to the following.
 
     ```text
     Running examples...
