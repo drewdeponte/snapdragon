@@ -16,6 +16,22 @@ Or install it yourself as:
 
     $ gem install snapdragon
 
+## Install PhantomJS
+
+You need at least [PhantomJS](http://phantomjs.org) 1.8.1. There are no other
+external dependencies (you don't need Qt, or a running X server, etc.)
+
+### Mac OS X
+
+I recommend installing [PhantomJS](http://phantomjs.org/) using
+[Homebrew](http://mxcl.github.io/homebrew/) on Mac OS X. Using
+[Homebrew](http://mxcl.github.io/homebrew/) it can be installed as easily as
+running the following command:
+
+```
+brew install phantomjs
+```
+
 ## Usage
 
 TODO: Write usage instructions here
