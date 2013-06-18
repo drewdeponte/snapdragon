@@ -4,16 +4,6 @@
 
 <script type="text/javascript" src="/resources/ConsoleReporter.js"></script>
 
-<script type="text/javascript" src="/jasmine-core/boot.js"></script>
-
-<script type="text/javascript">
-  // standard jasmine code to add console reporter in the jasmine runner
-  var env = jasmine.getEnv();
-  var consoleReporterFunc = getJasmineRequireObj().ConsoleReporter();
-  var consoleReporter = new consoleReporterFunc({});
-  env.addReporter(consoleReporter);
-</script>
-
 <script type="text/javascript">
   // The implementation code the spec files being tested need
   <%= @suite.output_spec_dependencies %>
@@ -24,4 +14,37 @@
   <% @suite.spec_files.each do |spec| %>
     <%= spec.read %>
   <% end %>
+</script>
+
+<script type="text/javascript">
+  (function() {
+    var jasmineEnv = jasmine.getEnv();
+    jasmineEnv.updateInterval = 1000;
+
+    var htmlReporter = new jasmine.HtmlReporter();
+
+    jasmineEnv.addReporter(htmlReporter);
+
+    var consoleReporterFunc = jasmine.ConsoleReporter();
+    var consoleReporter = new consoleReporterFunc({});
+    jasmineEnv.addReporter(consoleReporter);
+
+    jasmineEnv.specFilter = function(spec) {
+      return htmlReporter.specFilter(spec);
+    };
+
+    var currentWindowOnload = window.onload;
+
+    window.onload = function() {
+      if (currentWindowOnload) {
+        currentWindowOnload();
+      }
+      execJasmine();
+    };
+
+    function execJasmine() {
+      jasmineEnv.execute();
+    }
+
+  })();
 </script>
