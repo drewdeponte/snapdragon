@@ -46,6 +46,33 @@ command-line and see the output of your tests justs as you would if using
 RSpec out of the box. The follownig are a few different examples of how this
 can be used.
 
+#### Run a specific describe/it block
+
+The following runs the describe or it block that corresponds to line number
+**23** in the **spec/javascript/foo_spec.js** file.
+
+```
+snapdragon spec/javascript/foo_spec.js:23
+```
+
+#### Run an entire spec file(s)
+
+```
+snapdragon spec/javascript/foo_spec.js spec/javascript/bar_spec.js
+```
+
+#### Run an entire directory of spec files
+
+```
+snapdragon spec/javascripts
+```
+
+#### Run combination of files and directories
+
+```
+snapdragon spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
+```
+
 ### snapdragon_server
 
 The second is focused around allowing you to run your
