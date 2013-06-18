@@ -190,7 +190,7 @@ file.
 
 *example/src/hoopty.js*
 
-```
+```javascript
 var Hoopty = function() {
   this.hello = function() {
     return "Hello There";
@@ -200,19 +200,13 @@ var Hoopty = function() {
 
 *example/spec/hoopty_spec.js*
 
-```
+```javascript
 // require_relative('../src/hoopty.js')
 
 describe("Hoopty", function() {
   it("exists", function() {
     var f = new Hoopty();
     expect(f).not.toBe(undefined);
-  });
-
-  it("handles pending", function() {
-  });
-
-  it("handles another pending", function() {
   });
 
   describe(".hello", function() {
