@@ -32,21 +32,14 @@ running the following command:
 brew install phantomjs
 ```
 
-## Usage
+## Usage (snapdragon)
 
-Snapdragon provides two commands, **snapdragon** and **snapdragon_server**
-which allow you to run your [Jasmine](http://pivotal.github.io/jasmine/)
-tests.
+The **snapdragon** command allows you to run your
+[Jasmine](http://pivotal.github.io/jasmine/) specs from the command-line just
+as you would with RSpec and other testing tools. The following are some usage
+examples.
 
-### snapdragon
-
-The first is focused around allowing you to run your
-[Jasmine](http://pivotal.github.io/jasmine/) specs purely from the
-command-line and see the output of your tests justs as you would if using
-RSpec out of the box. The follownig are a few different examples of how this
-can be used.
-
-#### Run a specific describe/it block
+### Run a specific describe/it block
 
 The following runs the describe or it block that corresponds to line number
 **23** in the **spec/javascript/foo_spec.js** file.
@@ -55,47 +48,47 @@ The following runs the describe or it block that corresponds to line number
 snapdragon spec/javascript/foo_spec.js:23
 ```
 
-#### Run an entire spec file(s)
+### Run an entire spec file(s)
 
 ```
 snapdragon spec/javascript/foo_spec.js spec/javascript/bar_spec.js
 ```
 
-#### Run an entire directory of spec files
+### Run an entire directory of spec files
 
 ```
 snapdragon spec/javascripts
 ```
 
-#### Run combination of files and directories
+### Run combination of files and directories
 
 ```
 snapdragon spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
 ```
 
-### snapdragon_server
+## Usage (snapdragon_server)
 
-The second is focused around allowing you to run your
+The **snapdragon_server** command allows you to run your
 [Jasmine](http://pivotal.github.io/jasmine/) specs in your browser. When this
 command is run it will launch the **snapdragon_server** and open your default
-browser to the proper URL to run your specified test suite.  This is
-especially useful if you want to debug some JavaScript as your browser most
-likely has a JavaScript debugger built into it. A few examples of this command
+browser to the proper URL to run your specified test suite. This is especially
+useful if you want to debug some JavaScript as your browser most likely has a
+JavaScript debugger built into it. A few examples of this commands usage
 follow.
 
-#### Run specific spec files
+### Run specific spec files
 
 ```
 snapdragon_server spec/javascript/foo_spec.js spec/javascript/bar_spec.js
 ```
 
-#### Run all the specs in directories
+### Run all the specs in directories
 
 ```
 snapdragon_server spec/javascript custom_js/specs
 ```
 
-#### Combine files and directories
+### Combine files and directories
 
 ```
 snapdragon_server spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
