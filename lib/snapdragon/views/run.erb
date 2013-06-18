@@ -7,7 +7,7 @@
 <script type="text/javascript" src="/jasmine-core/boot.js"></script>
 
 <script type="text/javascript">
-  // standard jasmine code to add console reporter in runner code goes here
+  // standard jasmine code to add console reporter in the jasmine runner
   var env = jasmine.getEnv();
   var consoleReporterFunc = getJasmineRequireObj().ConsoleReporter();
   var consoleReporter = new consoleReporterFunc({});
@@ -17,21 +17,6 @@
 <script type="text/javascript">
   // The implementation code the spec files being tested need
   <%= @suite.output_spec_dependencies %>
-
-  // Thoughts on loading the implementation file content for the paired spec content below
-  // 
-  // Scenario #1: User runs comand with specific relative_spec_path:line_number
-  //   - parse the spec file for // require('relative_path_to_implementation_file') calls
-  //   - collect all of the require calls and unique them
-  //   - expand the path for each of the require calls using a configurable base path or the project root path
-  //   - iterate through each of the implementation files and read their content into the script tag here
-  //
-  // Scenario #3: User runs comand with specific relative path to a directory
-  //   - recursively iterate through the directory finding spec files, for each spec file we do the following
-  //     - parse the spec file for // require('relative_path_to_implementation_file') calls
-  //   - collect all of the require calls and unique them
-  //   - expand the path for each of the require calls using a configurable base path or the project root path
-  //   - iterate through each of the implementation files and read their content into the script tag here
 </script>
 
 <script type="text/javascript">
