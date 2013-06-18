@@ -94,6 +94,52 @@ snapdragon_server spec/javascript custom_js/specs
 snapdragon_server spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
 ```
 
+## // require_relative() directive
+
+Snapdragon also provides a `// require_relative()` directive that the
+Snapdragon preprocessor looks for to identify the necessary implementation
+files that need to be loaded for the spec files to run. This directive should
+define the relative path to associated implementation files needed for a spec,
+relative to that spec file. The following is an example spec and implemantion
+file.
+
+*example/src/hoopty.js*
+
+```
+var Hoopty = function() {
+  this.hello = function() {
+    return "Hello There";
+  }
+};
+```
+
+*example/spec/hoopty_spec.js*
+
+```
+// require_relative('../src/hoopty.js')
+
+describe("Hoopty", function() {
+  it("exists", function() {
+    var f = new Hoopty();
+    expect(f).not.toBe(undefined);
+  });
+
+  it("handles pending", function() {
+  });
+
+  it("handles another pending", function() {
+  });
+
+  describe(".hello", function() {
+    it("says hello there", function() {
+      var f = new Hoopty();
+      expect(f.hello()).toBe("Hello There");
+    });
+  });
+});
+
+```
+
 ## The Back Story
 
 If you have ever used [Jasmine](http://pivotal.github.io/jasmine/) for your
