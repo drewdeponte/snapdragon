@@ -6,6 +6,15 @@ describe Snapdragon::SpecFile do
       spec_file = Snapdragon::SpecFile.new('some/path/to_some_spec.js')
       spec_file.instance_variable_get(:@path).should eq('some/path/to_some_spec.js')
     end
-  end
 
+    it "assigns the given line number" do
+      spec_file = Snapdragon::SpecFile.new('some/path/to_some_spec.js', 54)
+      spec_file.instance_variable_get(:@line_number).should eq(54)
+    end
+
+    it "line number defaults to nil when not assigned" do
+      spec_file = Snapdragon::SpecFile.new('some/path/to_some_spec.js')
+      spec_file.instance_variable_get(:@line_number).should eq(nil)
+    end
+  end
 end

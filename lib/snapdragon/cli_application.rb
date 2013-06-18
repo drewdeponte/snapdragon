@@ -18,6 +18,15 @@ module Snapdragon
       run_suite
     end
 
+    def serve
+      parse_arguements(@args)
+      server = Capybara::Server.new(Snapdragon::WebApplication.new(nil, @suite), 9292)
+      server.boot
+      puts "open http://localhost:9292/run to run your test suite"
+      trap('SIGINT') { puts "Shutting down..."; exit 0 }
+      sleep
+    end
+
     private
 
     def parse_arguements(arguements)
@@ -52,7 +61,11 @@ module Snapdragon
 
     def run_suite
       session = Capybara::Session.new(:poltergeist, Snapdragon::WebApplication.new(nil, @suite))
-      session.visit('/run')
+      if @suite.filtered?
+        session.visit("/run?spec=#{@suite.spec_query_param}")
+      else
+        session.visit("/run")
+      end
     end
   end
 end
