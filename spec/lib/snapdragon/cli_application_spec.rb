@@ -36,6 +36,13 @@ describe Snapdragon::CliApplication do
       app.should_receive(:run_suite)
       app.run
     end
+    
+    it "returns 0 representing success" do
+      app = Snapdragon::CliApplication.new(['/some/path/to_some_spec.js'])
+      app.stub(:parse_arguements)
+      app.stub(:run_suite)
+      app.run.should eq(0)
+    end
   end
 
   describe "#parse_arguements" do

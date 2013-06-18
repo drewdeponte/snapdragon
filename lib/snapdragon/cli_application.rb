@@ -17,6 +17,7 @@ module Snapdragon
     def run
       parse_arguements(@args)
       run_suite
+      return 0
     end
 
     def serve
