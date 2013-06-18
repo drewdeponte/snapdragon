@@ -1,6 +1,6 @@
 # Snapdragon
 
-**A command-line Jasmine (JavaScript) test runner built with developer workflow in mind.**
+**A command-line [Jasmine](http://pivotal.github.io/jasmine/) (JavaScript) test runner built with developer workflow in mind.**
 
 ## Installation
 
@@ -35,23 +35,26 @@ brew install phantomjs
 ## Usage
 
 Snapdragon provides two commands, **snapdragon** and **snapdragon_server**
-which allow you to run your Jasmine tests.
+which allow you to run your [Jasmine](http://pivotal.github.io/jasmine/)
+tests.
 
 ### snapdragon
 
-The first is focused around allowing you to run your Jasmine specs purely from
-the command-line and see the output of your tests justs as you would if using
+The first is focused around allowing you to run your
+[Jasmine](http://pivotal.github.io/jasmine/) specs purely from the
+command-line and see the output of your tests justs as you would if using
 RSpec out of the box. The follownig are a few different examples of how this
 can be used.
 
 ### snapdragon_server
 
-The second is focused around allowing you to run your Jasmine specs in your
-browser. When this command is run it will launch the **snapdragon_server** and
-open your default browser to the proper URL to run your specified test suite.
-This is especially useful if you want to debug some JavaScript as your browser
-most likely has a JavaScript debugger built into it. A few examples of this
-command follow.
+The second is focused around allowing you to run your
+[Jasmine](http://pivotal.github.io/jasmine/) specs in your browser. When this
+command is run it will launch the **snapdragon_server** and open your default
+browser to the proper URL to run your specified test suite.  This is
+especially useful if you want to debug some JavaScript as your browser most
+likely has a JavaScript debugger built into it. A few examples of this command
+follow.
 
 #### Run specific spec files
 
@@ -73,11 +76,13 @@ snapdragon_server spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar
 
 ## The Back Story
 
-If you have ever used Jasmine for your JavaScript BDD style testing framework
-I am sure you have run into the following issues just as I have.
+If you have ever used [Jasmine](http://pivotal.github.io/jasmine/) for your
+JavaScript BDD style testing framework I am sure you have run into the
+following issues just as I have.
 
-1. Getting up and running with Jasmine is quite a pain and the
-   examples of how to setup your SpecRunner.html are sparse.
+1. Getting up and running with [Jasmine](http://pivotal.github.io/jasmine/) is
+   quite a pain and the examples of how to setup your SpecRunner.html are
+   sparse.
 2. Having to manually add the dependency files and spec files to the
    SpecRunner.html is a huge pain in the ass.
 3. Limiting a test run to a specific spec file is near impossible with the
