@@ -28,13 +28,98 @@ I recommend installing [PhantomJS](http://phantomjs.org/) using
 [Homebrew](http://mxcl.github.io/homebrew/) it can be installed as easily as
 running the following command:
 
-```
-brew install phantomjs
-```
+    $ brew install phantomjs
+
+## Quick Start Guide
+
+For those of you that like to jump right in and start playing with new tools
+follow the steps below to get started.
+
+1. Install [Snapdragon](http://github.com/reachlocal/snapdragon) and
+   [PhantomJS](http://phantomjs.org/) as outlined above.
+
+2. Create a simple [Jasmine](http://pivotal.github.io/jasmine/) spec file
+   `example/spec/hoopty_spec.js` with the following content.
+
+    ```javascript
+    describe("Hoopty", function() {
+      describe(".hello", function() {
+        it("says hello there", function() {
+          var f = new Hoopty();
+          expect(f.hello()).toBe("Hello There");
+        });
+      });
+    });
+    ```
+
+3. Run your spec file with the following command:
+
+    ```text
+    $ snapdragon example/spec/hoopty_spec.js
+    ```
+
+    You should see output looking similar to the following.
+
+    ```text
+    Running examples...
+
+    Failures:
+
+      1) Hoopty .hello says hello there.
+          ReferenceError: Can't find variable: Hoopty in http://127.0.0.1:51202/run (line 35)
+
+    Finished in 0.002 seconds
+    1 example, 1 failure
+    ```
+
+4. Create the implementation file for the spec file `example/src/hoopty.js`
+   with the following content.
+
+    ```javascript
+    var Hoopty = function() {
+      this.hello = function() {
+        return "Hello There";
+      }
+    };
+    ```
+
+5. Prepend a `// require_relative()` directive to the spec file telling it
+   about the implementation file. This should look as follows once complete.
+
+    ```javascript
+    // require_relative('../src/hoopty.js')
+
+    describe("Hoopty", function() {
+      describe(".hello", function() {
+        it("says hello there", function() {
+          var f = new Hoopty();
+          expect(f.hello()).toBe("Hello There");
+        });
+      });
+    });
+    ```
+
+6. Run your spec file with the following command:
+
+    ```text
+    $ snapdragon example/spec/hoopty_spec.js
+    ```
+
+    You should see output should now look similar to the following.
+
+    ```text
+    Running examples...
+
+    Finished in 0.001 seconds
+    1 example, 0 failures
+    ```
+
+Thats it, you now have [Snapdragon](http://github.com/reachlocal/snapdragon)
+running a [Jasmine](http://pivotal.github.io/jasmine/) spec.
 
 ## Usage (snapdragon)
 
-The **snapdragon** command allows you to run your
+The *snapdragon* command allows you to run your
 [Jasmine](http://pivotal.github.io/jasmine/) specs from the command-line just
 as you would with RSpec and other testing tools. The following are some usage
 examples.
@@ -42,7 +127,7 @@ examples.
 ### Run a specific describe/it block
 
 The following runs the describe or it block that corresponds to line number
-**23** in the **spec/javascript/foo_spec.js** file.
+*23* in the *spec/javascript/foo_spec.js* file.
 
 ```
 snapdragon spec/javascript/foo_spec.js:23
@@ -68,9 +153,9 @@ snapdragon spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.j
 
 ## Usage (snapdragon_server)
 
-The **snapdragon_server** command allows you to run your
+The *snapdragon_server* command allows you to run your
 [Jasmine](http://pivotal.github.io/jasmine/) specs in your browser. When this
-command is run it will launch the **snapdragon_server** and open your default
+command is run it will launch the *snapdragon_server* and open your default
 browser to the proper URL to run your specified test suite. This is especially
 useful if you want to debug some JavaScript as your browser most likely has a
 JavaScript debugger built into it. A few examples of this commands usage
@@ -154,7 +239,7 @@ following issues just as I have.
 3. Limiting a test run to a specific spec file is near impossible with the
    only solution being to comment out script tags in your SpecRunner.html.
 4. Limiting a test run to a specific *describe* or *it* block is near
-   impossible because the only way to do it is with the **spec** query param that
+   impossible because the only way to do it is with the *spec* query param that
    matches the full description of the *describe* or *it* block including all
    its parents. This can be very long and very prone to typos if you try to
    do this.
