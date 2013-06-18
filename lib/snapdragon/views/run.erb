@@ -5,15 +5,15 @@
 <script type="text/javascript" src="/resources/ConsoleReporter.js"></script>
 
 <script type="text/javascript">
-  // The implementation code the spec files being tested need
-  <%= @suite.output_spec_dependencies %>
+// The implementation code the spec files being tested need
+<%= @suite.output_spec_dependencies %>
 </script>
 
 <script type="text/javascript">
-  // The spec file contents
-  <% @suite.spec_files.each do |spec| %>
-    <%= spec.read %>
-  <% end %>
+// The spec file contents
+<% @suite.spec_files.each do |spec| %>
+<%= spec.read %>
+<% end %>
 </script>
 
 <script type="text/javascript">

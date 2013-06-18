@@ -6,14 +6,14 @@ module Snapdragon
     end
 
     def read
-      f = File.open(@path, 'r')
+      f = File.open(File.expand_path(@path), 'r')
       content = f.read
       f.close
       return content
     end
 
     def require_paths
-      f = File.open(@path, 'r')
+      f = File.open(File.expand_path(@path), 'r')
       lines = f.readlines
       f.close
 
@@ -41,7 +41,7 @@ module Snapdragon
       initial_line_number = @line_number
       initial_line_index = initial_line_number - 1
 
-      f = open(@path, 'r')
+      f = open(File.expand_path(@path), 'r')
       lines = f.readlines
       f.close
 

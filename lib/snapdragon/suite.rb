@@ -27,12 +27,15 @@ module Snapdragon
     end
 
     def output_spec_dependencies
-      require_content = ""
+      require_content = "// output spec dependencies begin here\n\n"
       @require_paths.each do |require_path|
+        require_content << "\n\n// #{require_path} begins here\n"
         f = File.open(require_path, 'r')
         require_content << f.read
+        require_content << "\n// #{require_path} ends here\n\n"
         f.close
       end
+      require_content << "\n// output spec dependencies end here\n"
       return require_content
     end
 

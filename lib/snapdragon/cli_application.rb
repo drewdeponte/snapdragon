@@ -56,15 +56,27 @@ module Snapdragon
     end
 
     def is_a_file_path_and_line_number?(arguement)
-      arguement =~ /^[\w\/\-\d]+[s|S]pec\.js:\d+$/
+      if arguement =~ /^[\w\/\-\d\.]+[s|S]pec\.js:\d+$/
+        return true
+      else
+        return false
+      end
     end
 
     def is_a_file_path?(arguement)
-      arguement =~ /^[\w\/\-\d]+[s|S]pec\.js$/
+      if arguement =~ /^[\w\/\-\d\.]+[s|S]pec\.js$/
+        return true
+      else
+        return false
+      end
     end
 
     def is_a_directory?(arguement)
-      arguement =~ /^[\w\/\-\d]+$/
+      if arguement =~ /^[\w\/\-\d\.]+$/
+        return true
+      else
+        return false
+      end
     end
 
     def run_suite
