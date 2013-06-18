@@ -34,7 +34,42 @@ brew install phantomjs
 
 ## Usage
 
-TODO: Write usage instructions here
+Snapdragon provides two commands, **snapdragon** and **snapdragon_server**
+which allow you to run your Jasmine tests.
+
+### snapdragon
+
+The first is focused around allowing you to run your Jasmine specs purely from
+the command-line and see the output of your tests justs as you would if using
+RSpec out of the box. The follownig are a few different examples of how this
+can be used.
+
+### snapdragon_server
+
+The second is focused around allowing you to run your Jasmine specs in your
+browser. When this command is run it will launch the **snapdragon_server** and
+open your default browser to the proper URL to run your specified test suite.
+This is especially useful if you want to debug some JavaScript as your browser
+most likely has a JavaScript debugger built into it. A few examples of this
+command follow.
+
+#### Run specific spec files
+
+```
+snapdragon_server spec/javascript/foo_spec.js spec/javascript/bar_spec.js
+```
+
+#### Run all the specs in directories
+
+```
+snapdragon_server spec/javascript custom_js/specs
+```
+
+#### Combine files and directories
+
+```
+snapdragon_server spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
+```
 
 ## The Back Story
 
