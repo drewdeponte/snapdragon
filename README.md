@@ -39,7 +39,10 @@ follow the steps below to get started.
    [PhantomJS](http://phantomjs.org/) as outlined above.
 
 2. Create a simple [Jasmine](http://pivotal.github.io/jasmine/) spec file
-   `example/spec/hoopty_spec.js` with the following content.
+   `example/spec/hoopty_spec.js` with the following content. Note: the
+   `// require_relative()` directive at the top of the file. This tells
+   [Snapdragon](http://github.com/reachlocal/snapdragon) what
+   implementation file(s) it needs to run the specs in this file.
 
     ```javascript
     // require_relative('../src/hoopty.js')
