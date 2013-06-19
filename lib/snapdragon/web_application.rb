@@ -22,5 +22,9 @@ module Snapdragon
     get "/resources/*" do |path|
       send_file File.expand_path(File.join('resources', path), File.dirname(__FILE__))
     end
+
+    get "/*" do |path|
+      send_file File.expand_path(File.join('.', path))
+    end
   end
 end
