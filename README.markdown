@@ -188,6 +188,11 @@ describe("Hoopty", function() {
 
 ```
 
+## The ChangeLog
+
+Information on notable changes in each release can be found in the
+[ChangeLog](http://github.com/reachlocal/snapdragon/blob/master/ChangeLog.markdown).
+
 ## The Back Story
 
 If you have ever used [Jasmine](http://pivotal.github.io/jasmine/) for your
