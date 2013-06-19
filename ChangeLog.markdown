@@ -6,6 +6,8 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v0.1.5
+
 * Jasmine runner now hosts files in CWD under `/:path` ([\#12](http://github.com/reachlocal/snapdragon/issues/12))
 
 #### v0.1.4
