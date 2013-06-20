@@ -6,9 +6,13 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* Moved from inline code loading to external script tag sources
+  ([\#13](http://github.com/reachlocal/snapdragon/issues/13))
+
 #### v0.1.5
 
-* Jasmine runner now hosts files in CWD under `/:path` ([\#12](http://github.com/reachlocal/snapdragon/issues/12))
+* Jasmine runner now hosts files in CWD under `/:path`
+  ([\#12](http://github.com/reachlocal/snapdragon/issues/12))
 
 #### v0.1.4
 
