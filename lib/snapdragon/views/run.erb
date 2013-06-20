@@ -4,17 +4,15 @@
 
 <script type="text/javascript" src="/resources/SnapdragonConsoleReporter.js"></script>
 
-<script type="text/javascript">
-// The implementation code the spec files being tested need
-<%= @suite.output_spec_dependencies %>
-</script>
-
-<script type="text/javascript">
-// The spec file contents
-<% @suite.spec_files.each do |spec| %>
-<%= spec.read %>
+<!-- The implementation code the spec files being tested need -->
+<% @suite.require_paths.each do |path| %>
+<script type="text/javascript" src="<%= path %>"></script>
 <% end %>
-</script>
+
+<!-- The spec files -->
+<% @suite.spec_files.each do |spec| %>
+<script type="text/javascript" src="<%= spec.relative_url_path %>"></script>
+<% end %>
 
 <script type="text/javascript">
   (function() {

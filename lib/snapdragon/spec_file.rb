@@ -12,6 +12,10 @@ module Snapdragon
       return content
     end
 
+    def relative_url_path
+      File.join('/', @path)
+    end
+
     def require_paths
       f = File.open(File.expand_path(@path), 'r')
       lines = f.readlines
@@ -21,7 +25,7 @@ module Snapdragon
 
       lines.each do |line|
         if line =~ /\/\/+\s+require_relative\(['"](.+)['"]\)\s+$/
-          require_paths << File.expand_path(File.join(File.dirname(@path), $1))
+          require_paths << File.join('/', File.join(File.dirname(@path), $1))
         end
       end
 

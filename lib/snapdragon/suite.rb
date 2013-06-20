@@ -26,6 +26,10 @@ module Snapdragon
       @specs
     end
 
+    def require_paths
+      @require_paths
+    end
+
     def output_spec_dependencies
       require_content = "// output spec dependencies begin here\n\n"
       @require_paths.each do |require_path|
