@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/jasmine-core/jasmine.js"></script>
 <script type="text/javascript" src="/jasmine-core/jasmine-html.js"></script>
 
-<script type="text/javascript" src="/resources/ConsoleReporter.js"></script>
+<script type="text/javascript" src="/resources/SnapdragonConsoleReporter.js"></script>
 
 <script type="text/javascript">
 // The implementation code the spec files being tested need
@@ -25,9 +25,8 @@
 
     jasmineEnv.addReporter(htmlReporter);
 
-    var consoleReporterFunc = jasmine.ConsoleReporter();
-    var consoleReporter = new consoleReporterFunc({});
-    jasmineEnv.addReporter(consoleReporter);
+    var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter({});
+    jasmineEnv.addReporter(snapdragonConsoleReporter);
 
     jasmineEnv.specFilter = function(spec) {
       return htmlReporter.specFilter(spec);
