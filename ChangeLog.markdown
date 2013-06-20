@@ -6,6 +6,8 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* snapdragon_server now finds new files/specs on browser refresh
+  ([\#1](http://github.com/reachlocal/snapdragon/issues/1))
 * Stack traces are now exclude jasmine.js lines
   ([\#10](http://github.com/reachlocal/snapdragon/issues/10))
 * Added stack traces to the output of failed expectations

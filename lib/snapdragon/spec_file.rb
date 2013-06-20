@@ -1,23 +1,15 @@
 module Snapdragon
   class SpecFile
-    def initialize(path, line_number = nil)
+    def initialize(path)
       @path = path
-      @line_number = line_number
-    end
-
-    def read
-      f = File.open(File.expand_path(@path), 'r')
-      content = f.read
-      f.close
-      return content
     end
 
     def relative_url_path
-      File.join('/', @path)
+      File.join('/', @path.path)
     end
 
     def require_paths
-      f = File.open(File.expand_path(@path), 'r')
+      f = File.open(File.expand_path(@path.path), 'r')
       lines = f.readlines
       f.close
 
@@ -25,7 +17,7 @@ module Snapdragon
 
       lines.each do |line|
         if line =~ /\/\/+\s+require_relative\(['"](.+)['"]\)\s+$/
-          require_paths << File.join('/', File.join(File.dirname(@path), $1))
+          require_paths << File.join('/', File.join(File.dirname(@path.path), $1))
         end
       end
 
@@ -33,8 +25,7 @@ module Snapdragon
     end
 
     def filtered?
-      return true if @line_number
-      return false
+      return @path.has_line_number?
     end
 
     def spec_query_param
@@ -42,10 +33,10 @@ module Snapdragon
 
       # Work our way from the line number up to build the spec query param
       # description
-      initial_line_number = @line_number
+      initial_line_number = @path.line_number
       initial_line_index = initial_line_number - 1
 
-      f = open(File.expand_path(@path), 'r')
+      f = open(File.expand_path(@path.path), 'r')
       lines = f.readlines
       f.close
 

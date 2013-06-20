@@ -7,13 +7,13 @@ module Snapdragon
     end
 
     def spec_files
-      spec_paths = []
-      Dir.glob("#{@path}/**/*").each do |path|
-        if path =~ /^[\w\/\-\d]+[s|S]pec\.js$/
-          spec_paths << Snapdragon::SpecFile.new(path)
+      spec_file_objs = []
+      Dir.glob("#{@path.path}/**/*").each do |raw_path|
+        if raw_path =~ /^[\w\/\-\d]+[s|S]pec\.js$/
+          spec_file_objs << Snapdragon::SpecFile.new(Snapdragon::Path.new(raw_path))
         end
       end
-      return spec_paths
+      return spec_file_objs
     end
   end
 end
