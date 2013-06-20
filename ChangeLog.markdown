@@ -6,6 +6,8 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* Added stack traces to the output of failed expectations
+  ([\#14](http://github.com/reachlocal/snapdragon/issues/14))
 * Moved from inline code loading to external script tag sources
   ([\#13](http://github.com/reachlocal/snapdragon/issues/13))
 
