@@ -18,7 +18,14 @@ describe("Hoopty", function() {
   describe(".hello", function() {
     it("says hello there", function() {
       var f = new Hoopty();
-      expect(f.hello()).toBe("Hello There");
+      expect(f.hello()).toBe("Hello There aeuaeuo");
+    });
+  });
+
+  describe(".goodbye", function() {
+    it("says goodbye", function() {
+      var f = new Hoopty();
+      expect(f.goodbye()).toBe("goodbye");
     });
   });
 });
