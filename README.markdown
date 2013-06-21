@@ -225,6 +225,12 @@ describe("Hoopty", function() {
 Information on notable changes in each release can be found in the
 [ChangeLog](http://github.com/reachlocal/snapdragon/blob/master/ChangeLog.markdown).
 
+## IRC Channel
+
+We have a persistent IRC channel (**#snapdragon-js**) on
+[freenode](http://freenode.net/). Feel free to join it and ask questions, make
+suggestions, talk with developers, or just hang out.
+
 ## The Back Story
 
 If you have ever used [Jasmine](http://pivotal.github.io/jasmine/) for your
