@@ -6,15 +6,21 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'snapdragon'
+```
+gem 'snapdragon'
+```
 
 And then execute:
 
-    $ bundle
+```text
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install snapdragon
+```text
+$ gem install snapdragon
+```
 
 ## Install PhantomJS
 
@@ -28,7 +34,9 @@ I recommend installing [PhantomJS](http://phantomjs.org/) using
 [Homebrew](http://mxcl.github.io/homebrew/) it can be installed as easily as
 running the following command:
 
-    $ brew install phantomjs
+```text
+$ brew install phantomjs
+```
 
 ## Quick Start Guide
 
@@ -105,25 +113,29 @@ examples.
 The following runs the describe or it block that corresponds to line number
 *23* in the *spec/javascript/foo_spec.js* file.
 
-```
+```text
 $ snapdragon spec/javascript/foo_spec.js:23
 ```
 
 #### Run an entire spec file(s)
 
-```
+```text
 $ snapdragon spec/javascript/foo_spec.js spec/javascript/bar_spec.js
 ```
 
 #### Run an entire directory of spec files
 
-```
+The following recursively explores the given directories contents for
+files that end in `spec.js` or `Spec.js` and runs the tests in the identified
+spec files.
+
+```text
 $ snapdragon spec/javascripts
 ```
 
 #### Run combination of files and directories
 
-```
+```text
 $ snapdragon spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
 ```
 
@@ -137,21 +149,34 @@ useful if you want to debug some JavaScript as your browser most likely has a
 JavaScript debugger built into it. A few examples of this commands usage
 follow.
 
+#### Run a specific describe/it block
+
+The following runs the describe or it block that corresponds to line number
+*23* in the *spec/javascript/foo_spec.js* file.
+
+```text
+$ snapdragon_server spec/javascript/foo_spec.js:23
+```
+
 #### Run specific spec files
 
-```
+```text
 $ snapdragon_server spec/javascript/foo_spec.js spec/javascript/bar_spec.js
 ```
 
 #### Run all the specs in directories
 
-```
+The following recursively explores the given directories contents for
+files that end in `spec.js` or `Spec.js` and runs the tests in the identified
+spec files.
+
+```text
 $ snapdragon_server spec/javascript custom_js/specs
 ```
 
 #### Combine files and directories
 
-```
+```text
 $ snapdragon_server spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
 ```
 
