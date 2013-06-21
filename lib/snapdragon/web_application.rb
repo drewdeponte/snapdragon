@@ -4,7 +4,7 @@ require 'erb'
 module Snapdragon
   class WebApplication < Sinatra::Base
     set :static, false
-    set :root, File.expand_path('.', File.dirname(__FILE__))
+    set :root, ::File.expand_path('.', ::File.dirname(__FILE__))
 
     def initialize(app = nil, suite)
       super()
@@ -16,15 +16,15 @@ module Snapdragon
     end
 
     get "/jasmine-core/*" do |path|
-      send_file File.expand_path(File.join('../jasmine/lib/jasmine-core', path), File.dirname(__FILE__))
+      send_file ::File.expand_path(::File.join('../jasmine/lib/jasmine-core', path), ::File.dirname(__FILE__))
     end
 
     get "/resources/*" do |path|
-      send_file File.expand_path(File.join('resources', path), File.dirname(__FILE__))
+      send_file ::File.expand_path(::File.join('resources', path), ::File.dirname(__FILE__))
     end
 
     get "/*" do |path|
-      send_file File.expand_path(File.join('.', path))
+      send_file ::File.expand_path(::File.join('.', path))
     end
   end
 end

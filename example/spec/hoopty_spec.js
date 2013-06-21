@@ -1,4 +1,4 @@
-// require_relative('../src/hoopty.js')
+// require_relative('../spec_helper.js')
 
 // This is just some example Jasmine spec code to test that everything would
 // work assuming that I can find a way to get the spec code loaded in here

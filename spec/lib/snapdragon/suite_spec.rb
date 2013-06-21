@@ -38,4 +38,8 @@ describe Snapdragon::Suite do
       pending
     end
   end
+
+  describe "#require_files" do
+    it "needs to be tested"
+  end
 end

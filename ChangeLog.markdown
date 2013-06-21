@@ -6,6 +6,9 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* made require_relative directives work inside of required files
+  ([\#15](http://github.com/reachlocal/snapdragon/issues/15))
+
 #### v0.1.6
 
 * snapdragon_server when given `some/spec.js:344` now opens the browser to the
