@@ -106,25 +106,25 @@ The following runs the describe or it block that corresponds to line number
 *23* in the *spec/javascript/foo_spec.js* file.
 
 ```
-snapdragon spec/javascript/foo_spec.js:23
+$ snapdragon spec/javascript/foo_spec.js:23
 ```
 
 #### Run an entire spec file(s)
 
 ```
-snapdragon spec/javascript/foo_spec.js spec/javascript/bar_spec.js
+$ snapdragon spec/javascript/foo_spec.js spec/javascript/bar_spec.js
 ```
 
 #### Run an entire directory of spec files
 
 ```
-snapdragon spec/javascripts
+$ snapdragon spec/javascripts
 ```
 
 #### Run combination of files and directories
 
 ```
-snapdragon spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
+$ snapdragon spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
 ```
 
 ## Usage (snapdragon_server)
@@ -140,19 +140,19 @@ follow.
 #### Run specific spec files
 
 ```
-snapdragon_server spec/javascript/foo_spec.js spec/javascript/bar_spec.js
+$ snapdragon_server spec/javascript/foo_spec.js spec/javascript/bar_spec.js
 ```
 
 #### Run all the specs in directories
 
 ```
-snapdragon_server spec/javascript custom_js/specs
+$ snapdragon_server spec/javascript custom_js/specs
 ```
 
 #### Combine files and directories
 
 ```
-snapdragon_server spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
+$ snapdragon_server spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
 ```
 
 ## // require_relative() directive
