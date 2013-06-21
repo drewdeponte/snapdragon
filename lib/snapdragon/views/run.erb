@@ -5,7 +5,7 @@
 <script type="text/javascript" src="/resources/SnapdragonConsoleReporter.js"></script>
 
 <!-- The implementation code the spec files being tested need -->
-<% @suite.require_paths.each do |path| %>
+<% @suite.require_file_relative_url_paths.each do |path| %>
 <script type="text/javascript" src="<%= path %>"></script>
 <% end %>
 

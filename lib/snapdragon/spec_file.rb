@@ -1,29 +1,8 @@
+require_relative './file_base'
+require_relative './path'
+
 module Snapdragon
-  class SpecFile
-    def initialize(path)
-      @path = path
-    end
-
-    def relative_url_path
-      File.join('/', @path.path)
-    end
-
-    def require_paths
-      f = File.open(File.expand_path(@path.path), 'r')
-      lines = f.readlines
-      f.close
-
-      require_paths = []
-
-      lines.each do |line|
-        if line =~ /\/\/+\s+require_relative\(['"](.+)['"]\)\s+$/
-          require_paths << File.join('/', File.join(File.dirname(@path.path), $1))
-        end
-      end
-
-      return require_paths
-    end
-
+  class SpecFile < Snapdragon::FileBase
     def filtered?
       return @path.has_line_number?
     end

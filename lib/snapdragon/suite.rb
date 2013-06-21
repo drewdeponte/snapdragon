@@ -17,14 +17,17 @@ module Snapdragon
       return spec_file_objs
     end
 
-    def require_paths
-      require_paths = Set.new
+    def require_files
+      return get_require_files_from_files(spec_files)
+    end
 
-      spec_files.each do |foo|
-        require_paths.merge(foo.require_paths)
+    def require_file_relative_url_paths
+      paths = Set.new
+      require_files.each do |file|
+        paths << file.relative_url_path
       end
-
-      return require_paths
+      puts "DREW: paths = #{paths.inspect}"
+      return paths
     end
 
     def filtered?
@@ -39,6 +42,17 @@ module Snapdragon
         return spec_file.spec_query_param if spec_file.filtered?
       end
       return ''
+    end
+
+    private
+
+    def get_require_files_from_files(files)
+      req_files = []
+      files.each do |file|
+        req_files.concat(get_require_files_from_files(file.require_files))
+        req_files.concat(file.require_files)
+      end
+      return req_files
     end
   end
 end

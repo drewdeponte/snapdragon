@@ -21,7 +21,7 @@ module Snapdragon
           spec_dir = Snapdragon::SpecDirectory.new(self)
           return spec_dir.spec_files
         else
-          return [SpecFile.new(self)]
+          return [Snapdragon::SpecFile.new(self)]
         end
       end
       return []
@@ -35,11 +35,11 @@ module Snapdragon
     private
 
     def is_a_directory?
-      return File.directory?(@path)
+      return ::File.directory?(@path)
     end
 
     def exists?
-      return File.exists?(@path)
+      return ::File.exists?(@path)
     end
   end
 end
