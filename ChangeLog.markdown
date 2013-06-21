@@ -6,6 +6,8 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v0.1.7
+
 * made require_relative directives work inside of required files
   ([\#15](http://github.com/reachlocal/snapdragon/issues/15))
 
