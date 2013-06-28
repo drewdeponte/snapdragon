@@ -6,6 +6,11 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v0.1.8
+
+* removed debug puts statements that were left in
+* added the Jasmine license info to LICENSE since we package Jasmine
+
 #### v0.1.7
 
 * made require_relative directives work inside of required files
