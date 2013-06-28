@@ -26,7 +26,6 @@ module Snapdragon
       require_files.each do |file|
         paths << file.relative_url_path
       end
-      puts "DREW: paths = #{paths.inspect}"
       return paths
     end
 
