@@ -18,7 +18,7 @@ module Snapdragon
       require_paths = []
 
       lines.each do |line|
-        if line =~ /\/\/+\s+require_relative\(['"](.+)['"]\)\s+$/
+        if line =~ /\/\/+\s+require_relative\(['"](.+)['"]\).*$/
           require_paths << ::File.join(::File.dirname(@path.path), $1)
         end
       end
