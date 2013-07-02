@@ -6,6 +6,9 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* eliminated duplicate requires
+  ([\#17](http://github.com/reachlocal/snapdragon/issues/17))
+
 #### v0.1.8
 
 * removed debug puts statements that were left in
