@@ -6,6 +6,8 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* fixed bug preventing require\_relatives with no tailing whitespace from being
+  detected ([\#20](http://github.com/reachlocal/snapdragon/issues/20))
 * eliminated duplicate requires
   ([\#17](http://github.com/reachlocal/snapdragon/issues/17))
 
