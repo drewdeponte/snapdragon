@@ -41,5 +41,8 @@ end
 # into file_base.rb and it seemed to resolve it.
 module Snapdragon
   class RequireFile < Snapdragon::FileBase
+    def absolute_path
+      @path.absolute_path()
+    end
   end
 end

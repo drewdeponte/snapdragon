@@ -32,6 +32,10 @@ module Snapdragon
       return false
     end
 
+    def absolute_path
+      File.expand_path(@path)
+    end
+
     private
 
     def is_a_directory?

@@ -23,8 +23,12 @@ module Snapdragon
 
     def require_file_relative_url_paths
       paths = Set.new
+      absolute_paths = []
       require_files.each do |file|
-        paths << file.relative_url_path
+        if !absolute_paths.include?(file.absolute_path)
+          absolute_paths << file.absolute_path
+          paths << file.relative_url_path
+        end
       end
       return paths
     end
