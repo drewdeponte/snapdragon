@@ -42,8 +42,7 @@ $ brew install phantomjs
 
 If you are a visual learner Brian Miller and I have put together a Free
 [Snapdragon](http://github.com/reachlocal/snapdragon) Screencast at [The Code
-Breakdown](http://codebreakdown.com) ([direct
-download](http://codebreakdown.com/screencasts/7/download)).
+Breakdown](http://codebreakdown.com).
 
 [![It in Action](http://media.codebreakdown.com/thumbnails/tcb-0007-thumbnail-400x225.png)](http://codebreakdown.com)
 
