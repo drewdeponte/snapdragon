@@ -3,7 +3,7 @@
 $LOAD_PATH.unshift ::File.expand_path(::File.dirname(__FILE__) + '/../lib')
 
 require 'rubygems'
-require 'snapdragon/cli_application'
+require 'snapdragon/command_line_parser'
 require 'snapdragon/cli_application'
 
 Snapdragon::CommandLineParser.parse(ARGV)
