@@ -11,7 +11,7 @@ describe Snapdragon::CommandLineParser do
     end
     
     it "exit once version information is displayed" do
-      lambda { hide_output { subject.parse(["-v"]) } }.should raise_error(SystemExit)
+      lambda { hide_stdout { subject.parse(["-v"]) } }.should raise_error(SystemExit)
     end
     
     it "display usage information" do
@@ -20,12 +20,12 @@ describe Snapdragon::CommandLineParser do
     end
     
     it "exit once usage information is displayed" do
-      lambda { hide_output { subject.parse(["-h"]) } }.should raise_error(SystemExit)
+      lambda { hide_stdout { subject.parse(["-h"]) } }.should raise_error(SystemExit)
     end
     
     context "no args supplied" do
       it "exit" do
-        lambda { hide_output { subject.parse([]) } }.should raise_error(SystemExit)
+        lambda { hide_stdout { subject.parse([]) } }.should raise_error(SystemExit)
       end
     end
     
