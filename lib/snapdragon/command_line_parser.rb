@@ -16,7 +16,7 @@ module Snapdragon
           puts opts; exit
         end
       end
-    opts.parse!(args)
+      opts.parse!(args)
     end
   end
 end
