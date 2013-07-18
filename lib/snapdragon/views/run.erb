@@ -23,19 +23,19 @@
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 1000;
 
+    var htmlReporter = new jasmine.HtmlReporter();
+    jasmineEnv.addReporter(htmlReporter);
+
+    jasmineEnv.specFilter = function(spec) {
+      return htmlReporter.specFilter(spec);
+    };
+
     <% if @suite.formatter == "junit" %>
       var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter();
-      jasmineEnv.addReporter(new jasmine.TrivialReporter());
       jasmineEnv.addReporter(snapdragonJUnitReporter);
     <% else %>
-      var htmlReporter = new jasmine.HtmlReporter();
-      jasmineEnv.addReporter(htmlReporter);
       var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter({});
       jasmineEnv.addReporter(snapdragonConsoleReporter);
-
-      jasmineEnv.specFilter = function(spec) {
-        return htmlReporter.specFilter(spec);
-      };
     <% end %>
 
     var currentWindowOnload = window.onload;
