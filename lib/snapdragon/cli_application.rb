@@ -13,9 +13,8 @@ Capybara.default_wait_time = 120 # 2 mins
 
 module Snapdragon
   class CliApplication
-    def initialize(arguements)
-      @args = arguements
-      @suite = Snapdragon::Suite.new(arguements)
+    def initialize(options, paths)
+      @suite = Snapdragon::Suite.new(options, paths)
     end
 
     def run

@@ -2,28 +2,23 @@ require_relative '../../../lib/snapdragon/cli_application'
 
 describe Snapdragon::CliApplication do
   describe "#initialize" do
-    it "stores a copy of the given command line arguments" do
-      cmd_line_args = stub('command_line_args')
-      cli_app = Snapdragon::CliApplication.new(cmd_line_args)
-      cli_app.instance_variable_get(:@args).should eq(cmd_line_args)
-    end
-
     it "creates an empty Suite" do
       Snapdragon::Suite.should_receive(:new)
-      Snapdragon::CliApplication.new(stub)
+      Snapdragon::CliApplication.new(stub, stub)
     end
 
     it "assigns the new Suite to an instance variable" do
       suite = stub('suite')
       Snapdragon::Suite.stub(:new).and_return(suite)
-      app = Snapdragon::CliApplication.new(stub)
+      app = Snapdragon::CliApplication.new(stub, stub)
       app.instance_variable_get(:@suite).should eq(suite)
     end
   end
 
   describe "#run" do
-    let(:arguements) { stub('arguments') }
-    subject { Snapdragon::CliApplication.new(arguements) }
+    let(:paths) { stub('paths') }
+    let(:options) { stub('options') }
+    subject { Snapdragon::CliApplication.new(options, paths) }
 
     it "creates a capybara session" do
       suite = stub(filtered?: false)

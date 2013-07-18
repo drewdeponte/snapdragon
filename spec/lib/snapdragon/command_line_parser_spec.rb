@@ -34,5 +34,17 @@ describe Snapdragon::CommandLineParser do
         lambda { subject.parse(["spec/hello_spec.rb"]) }.should_not raise_error(SystemExit)
       end
     end
+
+    context "when format is provided" do
+      it "sets the format value" do
+        subject.parse(["--format", "junit", "spec/hello_spec.rb"]).format.should eq "junit"
+      end
+    end
+
+    context "when format is not provided" do
+      it "defaults to console" do
+        subject.parse(["spec/hello_spec.rb"]).format.should eq "console"
+      end
+    end
   end
 end

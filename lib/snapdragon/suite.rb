@@ -2,8 +2,13 @@ require_relative './path'
 
 module Snapdragon
   class Suite
-    def initialize(paths)
+    def initialize(options, paths)
+      @options = options
       @paths = paths
+    end
+
+    def formatter
+      @options.format
     end
 
     def spec_files
