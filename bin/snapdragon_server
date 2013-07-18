@@ -6,6 +6,6 @@ require 'rubygems'
 require 'snapdragon/command_line_parser'
 require 'snapdragon/cli_application'
 
-Snapdragon::CommandLineParser.parse(ARGV)
-app = Snapdragon::CliApplication.new(ARGV)
+opts = Snapdragon::CommandLineParser.parse(ARGV)
+app = Snapdragon::CliApplication.new(opts, ARGV)
 app.serve
