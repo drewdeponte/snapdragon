@@ -6,6 +6,10 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v0.1.11
+
+* fixed issue where junit formatter was outputing multiple xml docs.
+
 #### v0.1.10
 
 * added --format junit switch to make it output JUnit format for CI servers
