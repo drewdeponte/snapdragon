@@ -2,7 +2,11 @@
 <script type="text/javascript" src="/jasmine-core/jasmine.js"></script>
 <script type="text/javascript" src="/jasmine-core/jasmine-html.js"></script>
 
+<% if @suite.formatter == "junit" %>
+<script type="text/javascript" src="/resources/SnapdragonJUnitReporter.js"></script>
+<% else %>
 <script type="text/javascript" src="/resources/SnapdragonConsoleReporter.js"></script>
+<% end %>
 
 <!-- The implementation code the spec files being tested need -->
 <% @suite.require_file_relative_url_paths.each do |path| %>
@@ -20,15 +24,19 @@
     jasmineEnv.updateInterval = 1000;
 
     var htmlReporter = new jasmine.HtmlReporter();
-
     jasmineEnv.addReporter(htmlReporter);
-
-    var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter({});
-    jasmineEnv.addReporter(snapdragonConsoleReporter);
 
     jasmineEnv.specFilter = function(spec) {
       return htmlReporter.specFilter(spec);
     };
+
+    <% if @suite.formatter == "junit" %>
+      var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter();
+      jasmineEnv.addReporter(snapdragonJUnitReporter);
+    <% else %>
+      var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter({});
+      jasmineEnv.addReporter(snapdragonConsoleReporter);
+    <% end %>
 
     var currentWindowOnload = window.onload;
 
