@@ -6,6 +6,12 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v0.1.10
+
+* added --format junit switch to make it output JUnit format for CI servers
+* added -v and --version switches to notify users of the version
+* added -h and --help switches to notify users of the proper usage
+
 #### v0.1.9
 
 * fixed bug preventing require\_relatives with no tailing whitespace from being
