@@ -46,5 +46,17 @@ describe Snapdragon::CommandLineParser do
         subject.parse(["spec/hello_spec.rb"]).format.should eq "console"
       end
     end
+
+    context "when color option is not provided" do
+      it "defaults to true" do
+        subject.parse(["spec/hello_spec.rb"]).color.should eq true
+      end
+    end
+
+    context "when no-color option is provided" do
+      it "sets the color option" do
+        subject.parse(["--no-color", "spec/hello_spec.rb"]).color.should eq false
+      end
+    end
   end
 end

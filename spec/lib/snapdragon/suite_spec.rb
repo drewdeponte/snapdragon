@@ -32,6 +32,15 @@ describe Snapdragon::Suite do
     end
   end
 
+  describe "#use_color?" do
+    it "returns the configured color setting" do
+      color = stub
+      options = stub(color: color)
+      suite = Snapdragon::Suite.new(options, stub)
+      suite.use_color?.should eq color
+    end
+  end
+
   describe "#spec_files" do
     it "creates a path object to represent the path" do
       options = stub
