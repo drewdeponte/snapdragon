@@ -7,6 +7,7 @@ module Snapdragon
     def self.parse(args)
       options = OpenStruct.new
       options.format = "console" 
+      options.color = true
 
       opts = OptionParser.new do |opts|
         opts.banner = "Usage: snapdragon [options] [files or directories]"
@@ -18,6 +19,9 @@ module Snapdragon
         end
         opts.on('-f', '--format [FORMAT]', "set output format") do |format|
           options.format = format
+        end
+        opts.on('-c', '--[no-]color', '--[no-]colour', 'Enable color in the output.') do |o|
+          options.color = o
         end
         if args.empty?
           puts opts; exit
