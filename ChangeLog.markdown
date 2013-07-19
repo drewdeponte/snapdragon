@@ -6,6 +6,11 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v0.1.12
+
+* add the --color, --no-color, --colour, --no-colour, and -c option to
+  enable/disable color output
+
 #### v0.1.11
 
 * fixed issue where junit formatter was outputing multiple xml docs.
