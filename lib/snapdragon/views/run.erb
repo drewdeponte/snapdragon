@@ -34,7 +34,12 @@
       var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter();
       jasmineEnv.addReporter(snapdragonJUnitReporter);
     <% else %>
-      var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter({});
+      var reporterOptions = {};
+      <% if @suite.use_color? %>
+        reporterOptions.showColors = true;
+      <% end %>
+
+      var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter(reporterOptions);
       jasmineEnv.addReporter(snapdragonConsoleReporter);
     <% end %>
 

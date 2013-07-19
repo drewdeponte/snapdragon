@@ -11,6 +11,10 @@ module Snapdragon
       @options.format
     end
 
+    def use_color?
+      @options.color
+    end
+
     def spec_files
       spec_file_objs = []
 
