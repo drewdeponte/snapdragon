@@ -30,6 +30,12 @@
       return htmlReporter.specFilter(spec);
     };
 
+    //fixing error observed when no tests are added to spec, just describe block added to spec
+    //check reporterView for null before invoking suiteComplete
+    htmlReporter.reportSuiteResults = function(suite) {
+      this.reporterView && this.reporterView.suiteComplete(suite);
+    };
+    
     <% if @suite.formatter == "junit" %>
       var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter();
       jasmineEnv.addReporter(snapdragonJUnitReporter);
