@@ -15,10 +15,15 @@ module Snapdragon
       @options.color
     end
 
+    def pattern
+      @options.pattern
+    end
+
     def spec_files
       spec_file_objs = []
 
-      @paths.each do |raw_path|
+      @paths << Dir[pattern] if @paths.empty?
+      @paths.flatten.uniq.each do |raw_path|
         path = Snapdragon::Path.new(raw_path)
         spec_file_objs.concat(path.spec_files)
       end

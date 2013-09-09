@@ -8,6 +8,7 @@ module Snapdragon
       options = OpenStruct.new
       options.format = "console" 
       options.color = true
+      options.pattern = "spec/**/*_spec.js"
 
       opts = OptionParser.new do |opts|
         opts.banner = "Usage: snapdragon [options] [files or directories]"
@@ -23,8 +24,8 @@ module Snapdragon
         opts.on('-c', '--[no-]color', '--[no-]colour', 'Enable color in the output.') do |o|
           options.color = o
         end
-        if args.empty?
-          puts opts; exit
+        opts.on('-P', '--pattern PATTERN', 'Load files matching pattern (default: "spec/**/*_spec.js").') do |pattern|
+          options.pattern = pattern
         end
       end
       opts.parse!(args)
