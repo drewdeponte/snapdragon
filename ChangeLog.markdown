@@ -6,6 +6,10 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* added -P, --pattern options to over the test file search pattern as well as
+  a default test file search pattern when not given an explicit file or
+  directory path. 
+
 #### v0.1.12
 
 * add the --color, --no-color, --colour, --no-colour, and -c option to
