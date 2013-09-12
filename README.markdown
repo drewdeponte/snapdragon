@@ -138,6 +138,30 @@ $ snapdragon spec/javascripts
 $ snapdragon spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
 ```
 
+#### Run test files matched by default pattern (`spec/**/*_spec.js`)
+
+```text
+$ snapdragon
+```
+
+#### Run test files matched by custom pattern
+
+The following is an example command that specifies a custom pattern to use to
+match test files to run. Please note the double quote marks around the
+pattern. These are necessary as without them most shells will try and resolve
+the pattern for you. Further details on the glob syntax can be found
+[here](http://ruby-doc.org/core-2.0.0/Dir.html#method-c-glob).
+
+```text
+$ snapdragon -P "spec/assets/javascripts/foo/*_spec.js"
+```
+
+#### Output Usage Details/Help
+
+```text
+$ snapdragon --help
+```
+
 ## Usage (snapdragon_server)
 
 The *snapdragon_server* command allows you to run your
@@ -157,13 +181,13 @@ The following runs the describe or it block that corresponds to line number
 $ snapdragon_server spec/javascript/foo_spec.js:23
 ```
 
-#### Run specific spec files
+#### Run an entire spec file(s)
 
 ```text
 $ snapdragon_server spec/javascript/foo_spec.js spec/javascript/bar_spec.js
 ```
 
-#### Run all the specs in directories
+#### Run an entire directory of spec files
 
 The following recursively explores the given directories contents for
 files that end in `spec.js` or `Spec.js` and runs the tests in the identified
@@ -173,11 +197,81 @@ spec files.
 $ snapdragon_server spec/javascript custom_js/specs
 ```
 
-#### Combine files and directories
+#### Run combination of files and directories
 
 ```text
 $ snapdragon_server spec/javascript custom_js/tests/foo_spec.js custom_js/test/bar_spec.js
 ```
+
+#### Run test files matched by default pattern (`spec/**/*_spec.js`)
+
+```text
+$ snapdragon_server
+```
+
+#### Run test files matched by custom pattern
+
+The following is an example command that specifies a custom pattern to use to
+match test files to run. Please note the double quote marks around the
+pattern. These are necessary as without them most shells will try and resolve
+the pattern for you. Further details on the glob syntax can be found
+[here](http://ruby-doc.org/core-2.0.0/Dir.html#method-c-glob).
+
+```text
+$ snapdragon_server -P "spec/assets/javascripts/foo/*_spec.js"
+```
+
+#### Output Usage Details/Help
+
+```text
+$ snapdragon_server --help
+```
+
+### Additional Options
+
+Below is a listing of the various options that can be passed to either the
+`snapdragon` or `snapdragon_server` commands.
+
+#### Version (`-v`, `--version`)
+
+When given this option it will output the version that you are using
+and exit without running any tests.
+
+#### Help (`-h`, `--help`)
+
+When given this option it will output basic usage summary and exit without
+running any tests.
+
+#### Format (`-f FORMAT`, `--format FORMAT`)
+
+This option allows you to specify the output format of the tests. By default
+it outputs using the `console` format. This option is extremely useful when
+you would like to use `snapdragon` inside of a CI process because you can
+instruct it to output in other formats such as `junit` which CI services
+can parse.
+
+The following are the currently supported `FORMAT` values.
+
+* `console` (default)
+* `junit`
+
+#### Color (`--no-color`, `--no-colour`)
+
+If you would like to disable ANSI color output which is enabled by default,
+include either the `--no-color` or `--no-colour` option.
+
+#### Pattern (`-P PATTERN`, `--pattern PATTERN`)
+
+When this option is not given and no file or directory paths are given it
+uses the default pattern `"spec/**/*_spec.js"`.
+
+When given this option without any explicit file paths or directory paths it
+will use the provided glob pattern to identify which test files to run. Any
+example usage of this option can be seen above in the *Run test files matched
+by custom pattern* section. For more details on the glob pattern syntax please
+refer to the [Ruby
+Dir.glob](http://ruby-doc.org/core-2.0.0/Dir.html#method-c-glob)
+documentation.
 
 ## // require_relative() directive
 
