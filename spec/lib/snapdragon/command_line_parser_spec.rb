@@ -25,7 +25,7 @@ describe Snapdragon::CommandLineParser do
     
     context "no args supplied" do
       it "exit" do
-        lambda { hide_stdout { subject.parse([]) } }.should raise_error(SystemExit)
+        lambda { hide_stdout { subject.parse([]) } }.should_not raise_error(SystemExit)
       end
     end
     
@@ -56,6 +56,18 @@ describe Snapdragon::CommandLineParser do
     context "when no-color option is provided" do
       it "sets the color option" do
         subject.parse(["--no-color", "spec/hello_spec.rb"]).color.should eq false
+      end
+    end
+    
+    context "when pattern is provided" do
+      it "sets the pattern value" do
+        subject.parse(["--pattern", "spec/*/*_test.js"]).pattern.should eq "spec/*/*_test.js"
+      end
+    end
+    
+    context "when pattern is not provided" do
+      it "defaults to 'spec/**/*_spec.js'" do
+        subject.parse([]).pattern.should eq "spec/**/*_spec.js"
       end
     end
   end
