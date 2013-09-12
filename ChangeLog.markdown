@@ -6,6 +6,8 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v0.2.0
+
 * added -P, --pattern options to over the test file search pattern as well as
   a default test file search pattern when not given an explicit file or
   directory path. 
