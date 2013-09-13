@@ -6,6 +6,12 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v1.0.0
+
+This release doesn't include any new changes. It is simply here to signify
+that the public interface for the application is now at a stable place and
+shouldn't be changing in ways that would break existing functionality.
+
 #### v0.2.0
 
 * added -P, --pattern options to over the test file search pattern as well as
