@@ -2,6 +2,8 @@
 <script type="text/javascript" src="/jasmine-core/jasmine.js"></script>
 <script type="text/javascript" src="/jasmine-core/jasmine-html.js"></script>
 
+<script type="text/javascript" src="/resources/blanket.js" data-cover-flags="branchTracking" data-cover-adapter="/resources/blanket_jasmine.js"></script>
+
 <% if @suite.formatter == "junit" %>
 <script type="text/javascript" src="/resources/SnapdragonJUnitReporter.js"></script>
 <% else %>
@@ -10,7 +12,7 @@
 
 <!-- The implementation code the spec files being tested need -->
 <% @suite.require_file_relative_url_paths.each do |path| %>
-<script type="text/javascript" src="<%= path %>"></script>
+<script type="text/javascript" src="<%= path %>" data-cover></script>
 <% end %>
 
 <!-- The spec files -->
