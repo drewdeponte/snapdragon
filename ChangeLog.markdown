@@ -1,7 +1,7 @@
 # ChangeLog
 
 The following are lists of the notable changes included with each release.
-This is inteded to help keep people informed about notable changes between
+This is intended to help keep people informed about notable changes between
 versions as well as provide a rough history.
 
 #### Next Release
@@ -16,7 +16,7 @@ shouldn't be changing in ways that would break existing functionality.
 
 * added -P, --pattern options to over the test file search pattern as well as
   a default test file search pattern when not given an explicit file or
-  directory path. 
+  directory path.
 
 #### v0.1.12
 
