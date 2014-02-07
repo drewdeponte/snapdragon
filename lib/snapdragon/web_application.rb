@@ -15,8 +15,8 @@ module Snapdragon
       erb :run
     end
 
-    get "/jasmine-core/*" do |path|
-      send_file ::File.expand_path(::File.join('../jasmine/lib/jasmine-core', path), ::File.dirname(__FILE__))
+    get "/jasmine_v1/*" do |path|
+      send_file ::File.expand_path(::File.join('../jasmine_v1', path), ::File.dirname(__FILE__))
     end
 
     get "/resources/*" do |path|
