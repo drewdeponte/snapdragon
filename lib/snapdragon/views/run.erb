@@ -1,11 +1,25 @@
-<link rel="stylesheet" type="text/css" href="/jasmine_v1/jasmine.css">
-<script type="text/javascript" src="/jasmine_v1/jasmine.js"></script>
-<script type="text/javascript" src="/jasmine_v1/jasmine-html.js"></script>
+<link rel="stylesheet" type="text/css" href="/jasmine/jasmine.css">
+<script type="text/javascript" src="/jasmine/jasmine.js"></script>
+<script type="text/javascript" src="/jasmine/jasmine-html.js"></script>
+<script type="text/javascript" src="/jasmine/boot.js"></script>
 
 <% if @suite.formatter == "junit" %>
 <script type="text/javascript" src="/resources/SnapdragonJUnitReporter.js"></script>
+<script>
+  var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter();
+  jasmine.getEnv().addReporter(snapdragonJUnitReporter);
+</script>
 <% else %>
 <script type="text/javascript" src="/resources/SnapdragonConsoleReporter.js"></script>
+<script>
+  var env = jasmine.getEnv();
+  jasmineRequire.console(jasmineRequire, jasmine);
+  var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter({
+    env: env,
+    showColors: <% if @suite.use_color? %>true<% else %>false<% end %>
+  });
+  env.addReporter(snapdragonConsoleReporter);
+</script>
 <% end %>
 
 <!-- The implementation code the spec files being tested need -->
@@ -17,44 +31,3 @@
 <% @suite.spec_files.each do |spec| %>
 <script type="text/javascript" src="<%= spec.relative_url_path %>"></script>
 <% end %>
-
-<script type="text/javascript">
-  (function() {
-    var jasmineEnv = jasmine.getEnv();
-    jasmineEnv.updateInterval = 1000;
-
-    var htmlReporter = new jasmine.HtmlReporter();
-    jasmineEnv.addReporter(htmlReporter);
-
-    jasmineEnv.specFilter = function(spec) {
-      return htmlReporter.specFilter(spec);
-    };
-
-    <% if @suite.formatter == "junit" %>
-      var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter();
-      jasmineEnv.addReporter(snapdragonJUnitReporter);
-    <% else %>
-      var reporterOptions = {};
-      <% if @suite.use_color? %>
-        reporterOptions.showColors = true;
-      <% end %>
-
-      var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter(reporterOptions);
-      jasmineEnv.addReporter(snapdragonConsoleReporter);
-    <% end %>
-
-    var currentWindowOnload = window.onload;
-
-    window.onload = function() {
-      if (currentWindowOnload) {
-        currentWindowOnload();
-      }
-      execJasmine();
-    };
-
-    function execJasmine() {
-      jasmineEnv.execute();
-    }
-
-  })();
-</script>

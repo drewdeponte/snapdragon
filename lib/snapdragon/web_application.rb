@@ -12,7 +12,15 @@ module Snapdragon
     end
 
     get "/run" do
-      erb :run
+      if @suite.jasmine_ver == "1"
+        erb :run_v1
+      else
+        erb :run
+      end
+    end
+
+    get "/jasmine/*" do |path|
+      send_file ::File.expand_path(::File.join('../jasmine', path), ::File.dirname(__FILE__))
     end
 
     get "/jasmine_v1/*" do |path|
