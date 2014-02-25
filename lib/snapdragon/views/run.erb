@@ -6,8 +6,12 @@
 <% if @suite.formatter == "junit" %>
 <script type="text/javascript" src="/resources/SnapdragonJUnitReporter.js"></script>
 <script>
-  var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter();
-  jasmine.getEnv().addReporter(snapdragonJUnitReporter);
+  var env = jasmine.getEnv();
+  jasmineRequire.console(jasmineRequire, jasmine);
+  var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter({
+    env: env
+  });
+  env.addReporter(snapdragonJUnitReporter);
 </script>
 <% else %>
 <script type="text/javascript" src="/resources/SnapdragonConsoleReporter.js"></script>
