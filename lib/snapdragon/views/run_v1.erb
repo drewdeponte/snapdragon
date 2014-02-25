@@ -1,0 +1,60 @@
+<link rel="stylesheet" type="text/css" href="/jasmine_v1/jasmine.css">
+<script type="text/javascript" src="/jasmine_v1/jasmine.js"></script>
+<script type="text/javascript" src="/jasmine_v1/jasmine-html.js"></script>
+
+<% if @suite.formatter == "junit" %>
+<script type="text/javascript" src="/resources/SnapdragonJUnitReporter_v1.js"></script>
+<% else %>
+<script type="text/javascript" src="/resources/SnapdragonConsoleReporter_v1.js"></script>
+<% end %>
+
+<!-- The implementation code the spec files being tested need -->
+<% @suite.require_file_relative_url_paths.each do |path| %>
+<script type="text/javascript" src="<%= path %>"></script>
+<% end %>
+
+<!-- The spec files -->
+<% @suite.spec_files.each do |spec| %>
+<script type="text/javascript" src="<%= spec.relative_url_path %>"></script>
+<% end %>
+
+<script type="text/javascript">
+  (function() {
+    var jasmineEnv = jasmine.getEnv();
+    jasmineEnv.updateInterval = 1000;
+
+    var htmlReporter = new jasmine.HtmlReporter();
+    jasmineEnv.addReporter(htmlReporter);
+
+    jasmineEnv.specFilter = function(spec) {
+      return htmlReporter.specFilter(spec);
+    };
+
+    <% if @suite.formatter == "junit" %>
+      var snapdragonJUnitReporter = new jasmine.SnapdragonJUnitReporter();
+      jasmineEnv.addReporter(snapdragonJUnitReporter);
+    <% else %>
+      var reporterOptions = {};
+      <% if @suite.use_color? %>
+        reporterOptions.showColors = true;
+      <% end %>
+
+      var snapdragonConsoleReporter = new jasmine.SnapdragonConsoleReporter(reporterOptions);
+      jasmineEnv.addReporter(snapdragonConsoleReporter);
+    <% end %>
+
+    var currentWindowOnload = window.onload;
+
+    window.onload = function() {
+      if (currentWindowOnload) {
+        currentWindowOnload();
+      }
+      execJasmine();
+    };
+
+    function execJasmine() {
+      jasmineEnv.execute();
+    }
+
+  })();
+</script>

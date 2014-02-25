@@ -19,6 +19,10 @@ module Snapdragon
       @options.pattern
     end
 
+    def jasmine_ver
+      @options.jasmine_ver
+    end
+
     def spec_files
       spec_file_objs = []
 

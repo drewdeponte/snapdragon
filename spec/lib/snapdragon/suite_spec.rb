@@ -51,6 +51,15 @@ describe Snapdragon::Suite do
     end
   end
 
+  describe "#jasmine_ver" do
+    it "returns the Jasmine version being used" do
+      jasmine_ver = double('Jasmine version')
+      options = double(jasmine_ver: jasmine_ver)
+      suite = Snapdragon::Suite.new(options, double)
+      expect(suite.jasmine_ver).to be(jasmine_ver)
+    end
+  end
+
   describe "#spec_files" do
     context "when paths are provided" do
       it "does not read pattern from options" do
