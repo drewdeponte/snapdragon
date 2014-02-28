@@ -6,9 +6,10 @@ module Snapdragon
   class CommandLineParser
     def self.parse(args)
       options = OpenStruct.new
-      options.format = "console" 
+      options.format = "console"
       options.color = true
       options.pattern = "spec/**/*_spec.js"
+      options.jasmine_ver = "2"
 
       opts = OptionParser.new do |opts|
         opts.banner = "Usage: snapdragon [options] [files or directories]"
@@ -21,11 +22,14 @@ module Snapdragon
         opts.on('-f', '--format [FORMAT]', "set output format") do |format|
           options.format = format
         end
-        opts.on('-c', '--[no-]color', '--[no-]colour', 'Enable color in the output.') do |o|
-          options.color = o
+        opts.on('-N', "--nocolor", '--nocolour', 'Enable color in the output.') do
+          options.color = false
         end
         opts.on('-P', '--pattern PATTERN', 'Load files matching pattern (default: "spec/**/*_spec.js").') do |pattern|
           options.pattern = pattern
+        end
+        opts.on('-J1', '--jasminev1', 'Use Jasmine v1.3.1 instead of the default v2.x.') do
+          options.jasmine_ver = "1"
         end
       end
       opts.parse!(args)

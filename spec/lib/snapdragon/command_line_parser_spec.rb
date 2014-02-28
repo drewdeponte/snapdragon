@@ -55,7 +55,15 @@ describe Snapdragon::CommandLineParser do
 
     context "when no-color option is provided" do
       it "sets the color option" do
-        expect(subject.parse(["--no-color", "spec/hello_spec.rb"]).color).to eq false
+        expect(subject.parse(["-N", "spec/hello_spec.rb"]).color).to eq false
+      end
+
+      it "sets the color option" do
+        expect(subject.parse(["--nocolor", "spec/hello_spec.rb"]).color).to eq false
+      end
+
+      it "sets the color option" do
+        expect(subject.parse(["--nocolour", "spec/hello_spec.rb"]).color).to eq false
       end
     end
 
@@ -68,6 +76,22 @@ describe Snapdragon::CommandLineParser do
     context "when pattern is not provided" do
       it "defaults to 'spec/**/*_spec.js'" do
         expect(subject.parse([]).pattern).to eq "spec/**/*_spec.js"
+      end
+    end
+
+    context "when Jasmine version is not provided" do
+      it "defaults to '2'" do
+        expect(subject.parse([]).jasmine_ver).to eq '2'
+      end
+    end
+
+    context "when Jasmine version is provided" do
+      it "defaults to '1'" do
+        expect(subject.parse(['-J1', 'spec/hello_spec.rb']).jasmine_ver).to eq '1'
+      end
+
+      it "defaults to '1'" do
+        expect(subject.parse(['--jasminev1', 'spec/hello_spec.rb']).jasmine_ver).to eq '1'
       end
     end
   end
