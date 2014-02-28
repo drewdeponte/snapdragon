@@ -6,6 +6,9 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* switched to Jasmine 2 instead of Jasmine 1.3.1
+* added -J1, --jasminev1 option to allow people to still use Jasmine v1.3.1
+
 #### v1.0.0
 
 This release doesn't include any new changes. It is simply here to signify
