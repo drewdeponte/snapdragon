@@ -1,6 +1,6 @@
 # Snapdragon
 
-**A command-line [Jasmine](http://pivotal.github.io/jasmine/) (JavaScript) test runner built with developer workflow in mind.**
+**A command-line [Jasmine](http://jasmine.github.io) (JavaScript) test runner built with developer workflow in mind.**
 
 ## Installation
 
@@ -52,7 +52,7 @@ follow the steps below to get started.
 1. Install [Snapdragon](http://github.com/reachlocal/snapdragon) and
    [PhantomJS](http://phantomjs.org/) as outlined above.
 
-2. Create a simple [Jasmine](http://pivotal.github.io/jasmine/) spec file
+2. Create a simple [Jasmine](http://jasmine.github.io) spec file
    `example/spec/hoopty_spec.js` with the following content. Note: the
    `// require_relative()` directive at the top of the file. This tells
    [Snapdragon](http://github.com/reachlocal/snapdragon) what
@@ -98,12 +98,12 @@ follow the steps below to get started.
     ```
 
 Thats it, you now have [Snapdragon](http://github.com/reachlocal/snapdragon)
-running a [Jasmine](http://pivotal.github.io/jasmine/) spec.
+running a [Jasmine](http://jasmine.github.io) spec.
 
 ## Usage (snapdragon)
 
 The *snapdragon* command allows you to run your
-[Jasmine](http://pivotal.github.io/jasmine/) specs from the command-line just
+[Jasmine](http://jasmine.github.io) specs from the command-line just
 as you would with RSpec and other testing tools. The following are some usage
 examples.
 
@@ -165,7 +165,7 @@ $ snapdragon --help
 ## Usage (snapdragon_server)
 
 The *snapdragon_server* command allows you to run your
-[Jasmine](http://pivotal.github.io/jasmine/) specs in your browser. When this
+[Jasmine](http://jasmine.github.io) specs in your browser. When this
 command is run it will launch the *snapdragon_server* and open your default
 browser to the proper URL to run your specified test suite. This is especially
 useful if you want to debug some JavaScript as your browser most likely has a
@@ -326,11 +326,11 @@ suggestions, talk with developers, or just hang out.
 
 ## The Back Story
 
-If you have ever used [Jasmine](http://pivotal.github.io/jasmine/) for your
+If you have ever used [Jasmine](http://jasmine.github.io) for your
 JavaScript BDD style testing framework I am sure you have run into the
 following issues just as I have.
 
-1. Getting up and running with [Jasmine](http://pivotal.github.io/jasmine/) is
+1. Getting up and running with [Jasmine](http://jasmine.github.io) is
    quite a pain and the examples of how to setup your SpecRunner.html are
    sparse.
 2. Having to manually add the dependency files and spec files to the
