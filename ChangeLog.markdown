@@ -6,6 +6,10 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+#### v3.0.0
+
+* Updated Poltergeist 1.6 and Rspec 3.2 dependencies.
+
 #### v2.0.0
 
 * switched to Jasmine 2 instead of Jasmine 1.3.1
