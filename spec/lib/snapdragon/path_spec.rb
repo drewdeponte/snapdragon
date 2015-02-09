@@ -87,14 +87,14 @@ describe Snapdragon::Path do
     context "when the given raw path has a line number" do
       it "returns true" do
         path = Snapdragon::Path.new('some/path:234')
-        expect(path.has_line_number?).to be_true
+        expect(path.has_line_number?).to be(true)
       end
     end
 
     context "when the given raw path does NOT have a line number" do
       it "returns false" do
         path = Snapdragon::Path.new('some/path')
-        expect(path.has_line_number?).to be_false
+        expect(path.has_line_number?).to be(false)
       end
     end
   end

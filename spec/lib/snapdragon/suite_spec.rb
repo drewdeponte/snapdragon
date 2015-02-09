@@ -93,7 +93,7 @@ describe Snapdragon::Suite do
 
     context "when paths are empty" do
       it "reads the pattern from the options" do
-        pattern = double
+        pattern = double.to_s
         options = double(pattern: pattern)
         suite = Snapdragon::Suite.new(options, [])
         expect(suite).to receive(:pattern).and_return(pattern)
@@ -113,9 +113,7 @@ describe Snapdragon::Suite do
   end
 
   describe "#require_paths" do
-    it "returns the merged set of the require paths of each spec file" do
-      pending
-    end
+    it "returns the merged set of the require paths of each spec file"
   end
 
   describe "#require_files" do
