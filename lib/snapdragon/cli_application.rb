@@ -15,6 +15,13 @@ module Snapdragon
   class CliApplication
     def initialize(options, paths)
       @suite = Snapdragon::Suite.new(options, paths)
+      register_driver(options.phantom) unless options.phantom.empty?
+    end
+
+    def register_driver(phantom_options)
+      Capybara.register_driver :poltergeist do |app|
+        Capybara::Poltergeist::Driver.new(app, phantom_options)
+      end
     end
 
     def run

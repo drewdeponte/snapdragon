@@ -3,22 +3,58 @@ require_relative '../../../lib/snapdragon/cli_application'
 
 describe Snapdragon::CliApplication do
   describe "#initialize" do
+    let(:options) { double(phantom: {}) }
     it "creates an empty Suite" do
       expect(Snapdragon::Suite).to receive(:new)
-      Snapdragon::CliApplication.new(double, double)
+      Snapdragon::CliApplication.new(options, double)
     end
 
     it "assigns the new Suite to an instance variable" do
       suite = double('suite')
       allow(Snapdragon::Suite).to receive(:new).and_return(suite)
-      app = Snapdragon::CliApplication.new(double, double)
+      app = Snapdragon::CliApplication.new(options, double)
       expect(app.instance_variable_get(:@suite)).to be(suite)
+    end
+
+    context "when poltergeist options are passed" do
+      it "registers a new driver" do
+        phantom_options = {debug: true}
+        options = double(phantom: phantom_options)
+        expect_any_instance_of(Snapdragon::CliApplication).to receive(:register_driver).with(phantom_options)
+        Snapdragon::CliApplication.new(options, double)
+      end
+    end
+
+    context "when poltergeist options are not passed" do
+      it "does not register a new driver" do
+        expect_any_instance_of(Snapdragon::CliApplication).to_not receive(:register_driver)
+        Snapdragon::CliApplication.new(options, double)
+      end
+    end
+  end
+
+  describe "#register_driver" do
+    let(:paths) { double('paths') }
+    let(:options) { double(phantom: {}) }
+    subject { Snapdragon::CliApplication.new(options, paths) }
+
+    it "registers a poltergeist driver" do
+      expect(Capybara).to receive(:register_driver)
+      subject.register_driver(double)
+    end
+    
+    it "creates a new driver with the passed options" do
+      app = double('app')
+      options = double('options')
+      allow(Capybara).to receive(:register_driver).and_yield(app)
+      expect(Capybara::Poltergeist::Driver).to receive(:new).with(app, options)
+      subject.register_driver(options)
     end
   end
 
   describe "#run" do
     let(:paths) { double('paths') }
-    let(:options) { double('options') }
+    let(:options) { double('options').as_null_object }
     subject { Snapdragon::CliApplication.new(options, paths) }
 
     it "creates a capybara session" do
