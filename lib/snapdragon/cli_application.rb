@@ -15,17 +15,17 @@ module Snapdragon
   class CliApplication
     def initialize(options, paths)
       @suite = Snapdragon::Suite.new(options, paths)
-      register_driver(options.phantom) unless options.phantom.empty?
+      register_driver(options.driver)
     end
 
-    def register_driver(phantom_options)
-      Capybara.register_driver :poltergeist do |app|
-        Capybara::Poltergeist::Driver.new(app, phantom_options)
+    def register_driver(options)
+      Capybara.register_driver :snapdragon do |app|
+        Capybara::Poltergeist::Driver.new(app, options)
       end
     end
 
     def run
-      session = Capybara::Session.new(:poltergeist, Snapdragon::WebApplication.new(nil, @suite))
+      session = Capybara::Session.new(:snapdragon, Snapdragon::WebApplication.new(nil, @suite))
       if @suite.filtered?
         session.visit("/run?spec=#{@suite.spec_query_param}")
       else

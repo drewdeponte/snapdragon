@@ -96,18 +96,18 @@ describe Snapdragon::CommandLineParser do
     end
     
     context "when debug is provided" do
-      it "sets the phantom debug flag to true" do
-        expect(subject.parse(['-d', 'spec/hello_spec.rb']).phantom).to eq({debug: true})
+      it "sets the driver debug flag to true" do
+        expect(subject.parse(['-d', 'spec/hello_spec.rb']).driver).to eq({debug: true})
       end
 
-      it "sets the phantom debug flag to true" do
-        expect(subject.parse(['--debug', 'spec/hello_spec.rb']).phantom).to eq({debug: true})
+      it "sets the driver debug flag to true" do
+        expect(subject.parse(['--debug', 'spec/hello_spec.rb']).driver).to eq({debug: true})
       end
     end
 
     context "when debug is not provided" do
-      it "sets the phantom config to an empty hash" do
-        expect(subject.parse([]).phantom).to eq({}) 
+      it "sets the driver config to an empty hash" do
+        expect(subject.parse([]).driver).to eq({}) 
       end
     end
   end
