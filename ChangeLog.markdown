@@ -6,6 +6,8 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* added -d, --debug option to put javascript driver into debug mode
+
 #### v2.0.0
 
 * switched to Jasmine 2 instead of Jasmine 1.3.1
