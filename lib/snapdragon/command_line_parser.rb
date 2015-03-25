@@ -10,6 +10,7 @@ module Snapdragon
       options.color = true
       options.pattern = "spec/**/*_spec.js"
       options.jasmine_ver = "2"
+      options.driver = {}
 
       opts = OptionParser.new do |opts|
         opts.banner = "Usage: snapdragon [options] [files or directories]"
@@ -30,6 +31,9 @@ module Snapdragon
         end
         opts.on('-J1', '--jasminev1', 'Use Jasmine v1.3.1 instead of the default v2.x.') do
           options.jasmine_ver = "1"
+        end
+        opts.on('-d', '--debug', 'Put driver into debug mode') do
+          options.driver[:debug] = true 
         end
       end
       opts.parse!(args)

@@ -94,5 +94,21 @@ describe Snapdragon::CommandLineParser do
         expect(subject.parse(['--jasminev1', 'spec/hello_spec.rb']).jasmine_ver).to eq '1'
       end
     end
+    
+    context "when debug is provided" do
+      it "sets the driver debug flag to true" do
+        expect(subject.parse(['-d', 'spec/hello_spec.rb']).driver).to eq({debug: true})
+      end
+
+      it "sets the driver debug flag to true" do
+        expect(subject.parse(['--debug', 'spec/hello_spec.rb']).driver).to eq({debug: true})
+      end
+    end
+
+    context "when debug is not provided" do
+      it "sets the driver config to an empty hash" do
+        expect(subject.parse([]).driver).to eq({}) 
+      end
+    end
   end
 end
