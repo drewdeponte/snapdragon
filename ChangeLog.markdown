@@ -6,6 +6,8 @@ versions as well as provide a rough history.
 
 #### Next Release
 
+* added -d, --debug option to put javascript driver into debug mode
+
 #### v3.0.0
 
 * Updated Poltergeist 1.6 and Rspec 3.2 dependencies.
